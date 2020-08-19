@@ -5,7 +5,7 @@ var path = require('path');
 
 //Setup App
 var app = express();
-var server = app.listen(8080, '192.168.1.178', function() {
+var server = app.listen(8080, function() {
   console.log('Listening on port 8080');
 });
 
