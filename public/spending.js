@@ -1,6 +1,6 @@
 var spendinghistory = [];
 
-var sortedByReason = []
+var sortedByReason = [];
 
 function addTransaction() {
   var reason = document.getElementById('options').value;
