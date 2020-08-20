@@ -79,6 +79,7 @@ function addTransaction(data) {
       con.query(sql, function (err, result) {
         if ( !err ) {
           spendinghistory = result;
+          console.log(spendinghistory);
         } else if ( err ) {
           console.log(err);
         }
