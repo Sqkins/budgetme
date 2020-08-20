@@ -61,7 +61,14 @@ function newReason(reason) {
   con.query(sql, function (err, result) {
     if ( !err ) {
       console.log(reason + ' has been added as a new reason!');
-      reasons.push(reason);
+      var sql = "SELECT * FROM reasons";
+      con.query(sql, function (err, result) {
+        if ( !err ) {
+          reasons = result;
+        } else if ( err ) {
+          console.log(err);
+        }
+      });
       io.emit('reasons-data',reasons);
     } else if ( err ) {
       console.log(err);
