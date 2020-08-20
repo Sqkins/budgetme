@@ -85,7 +85,7 @@ function addTransaction(data) {
       });
       io.emit('spending-data',spendinghistory);
     } else if ( err ) {
-      console.log(err);
+      console.log('error');
     }
   });
 }
