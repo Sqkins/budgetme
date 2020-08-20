@@ -31,7 +31,6 @@ function sortByReason() {
       var totals = reasonsbd[r]; //total spend for reason so far
       totals+= s;
       reasonsbd[r] = totals;
-      console.log(reasonsbd[r]);
     } else {
       reasonsbd[r] = s;
     }
