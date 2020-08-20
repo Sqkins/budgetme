@@ -11,5 +11,5 @@ function addTransaction() {
   console.log(reason);
   console.log(date);
   console.log(amount);
-  socket.emit('new-transaction',reason,date,amount);
+  socket.emit('new-transaction',{reason,date,amount});
 }
