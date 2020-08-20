@@ -32,7 +32,7 @@ con.connect(function(err) {
   var sql = "SELECT * FROM reasons";
   con.query(sql, function (err, result) {
     if ( !err ) {
-      socket.emit('reasons-data')
+      io.emit('reasons-data')
     } else if ( err ) {
       console.log(err);
     }
