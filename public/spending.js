@@ -1,4 +1,6 @@
 var spendinghistory = [];
+// data ~ {reason : price}
+var reasonbreakdown = [];
 
 var sortedByReason = [];
 
@@ -35,5 +37,5 @@ function sortByReason() {
       reasonsbd[r] = s;
     }
   }
-   sortedByReason = reasonsbd;
+   reasonbreakdown = reasonsbd;
 }
