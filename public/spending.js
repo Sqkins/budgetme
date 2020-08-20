@@ -1,23 +1,24 @@
 var spendinghistory = [];
 // data ~ {reason : price}
 var reasonbreakdown = [];
+// data ~ {date : price}
+var datebreakdown = [];
 
 function addTransaction() {
   var reason = document.getElementById('options').value;
   var date = document.getElementById('date').value;
   var amount = document.getElementById('amount').value;
-  console.log('hey');
-  console.log(reason);
-  console.log(date);
-  console.log(amount);
   socket.emit('new-transaction',{reason,date,amount});
 }
 
 function showTransactions() {
   var div = document.getElementById('transactions');
   div.innerHTML = "";
-  for(var reason in sortedByReason) {
-    div.innerHTML += "<p>"+reason+" £"+sortedByReason[reason]+"</p>";
+  for(var reason in reasonbreakdown) {
+    div.innerHTML += "<p>"+reason+" £"+reasonbreakdown[reason]+"</p>";
+  }
+  for(var date in datebreakdown) {
+    div.innerHTML += "<p>"+date+" £"+datebreakdown[date]+"</p>";
   }
 }
 
@@ -35,4 +36,22 @@ function sortByReason() {
       reasonsbd[r] = s;
     }
   }
+  reasonsbreakdown = reasonsbd;
+}
+
+function sortByDate() {
+  var datesbd = [];
+  for(var x in spendinghistory) {
+    var d = spendinghistory[x].date; //date at transaction x
+    var s = spendinghistory[x].amount; //spend at transaction x
+    if (datesbd.hasOwnProperty(r)) {
+      var totals = datesbd[r]; //total spend for reason so far
+      totals+= s;
+      datesbd[r] = totals;
+      console.log(datesbd[r]);
+    } else {
+      datesbd[r] = s;
+    }
+  }
+  datebreakdown = datesbd;
 }
