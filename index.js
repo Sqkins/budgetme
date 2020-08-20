@@ -32,13 +32,16 @@ con.connect(function(err) {
   var sql = "SELECT * FROM reasons";
   con.query(sql, function (err, result) {
     if ( !err ) {
-      io.emit('reasons-data')
+      reasons = result;
     } else if ( err ) {
       console.log(err);
     }
   });
 });
 
+//variables
+
+var reasons = [];
 
 //socket paths:
 //sending reason data from database ~ reasons-data
@@ -46,4 +49,5 @@ var io = socket(server);
 io.on('connection', function(socket) {
   console.log('Made socket connection.');
   console.log(socket.id);
+  socket.emit('reasons-data',reasons);
 });
