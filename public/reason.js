@@ -13,6 +13,7 @@ function updateReasons(){
   var sel = document.getElementById('select-option');
   for(var option in reasons) {
     var opt = document.createElement('option');
+    console.log(option);
     opt.appendChild( document.createTextNode(option.reason) );
     opt.value = option.reason;
     sel.appendChild(opt);
