@@ -36,7 +36,7 @@ function sortByReason() {
       reasonsbd[r] = s;
     }
   }
-  reasonsbreakdown = reasonsbd;
+  reasonbreakdown = reasonsbd;
 }
 
 function sortByDate() {
