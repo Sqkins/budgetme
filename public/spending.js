@@ -44,13 +44,13 @@ function sortByDate() {
   for(var x in spendinghistory) {
     var d = spendinghistory[x].date; //date at transaction x
     var s = spendinghistory[x].amount; //spend at transaction x
-    if (datesbd.hasOwnProperty(r)) {
-      var totals = datesbd[r]; //total spend for reason so far
+    if (datesbd.hasOwnProperty(d)) {
+      var totals = datesbd[d]; //total spend for reason so far
       totals+= s;
-      datesbd[r] = totals;
-      console.log(datesbd[r]);
+      datesbd[d] = totals;
+      console.log(datesbd[d]);
     } else {
-      datesbd[r] = s;
+      datesbd[d] = s;
     }
   }
   datebreakdown = datesbd;
