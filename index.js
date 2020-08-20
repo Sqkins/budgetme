@@ -45,9 +45,26 @@ var reasons = [];
 
 //socket paths:
 //sending reason data from database ~ reasons-data
+//adding a reason ~ add-reason (data = 'reason')
 var io = socket(server);
 io.on('connection', function(socket) {
   console.log('Made socket connection.');
   console.log(socket.id);
   socket.emit('reasons-data',reasons);
+  socket.on('add-reason',function(data){
+    newReason(data);
+  })
 });
+
+function newReason(reason) {
+  var sql = "INSERT INTO customers (reason) VALUES ("+reason+")";
+  con.query(sql, function (err, result) {
+    if ( !err ) {
+      console.log(reason + ' has been added as a new reason!');
+      reasons.push(reason);
+      io.emit('reasons-data',reasons);
+    } else if ( err ) {
+      console.log(err);
+    }
+  });
+}
