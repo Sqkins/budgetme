@@ -24,6 +24,7 @@ function showTransactions() {
 
 function sortByReason() {
   var reasonsbd = [];
+  console.log('sorting by reasons');
   for(var x in spendinghistory) {
     var r = spendinghistory[x].reason; //reason at transaction x
     var s = spendinghistory[x].amount; //spend at transaction x
@@ -40,6 +41,7 @@ function sortByReason() {
 
 function sortByDate() {
   var datesbd = [];
+  console.log('sorting by dates');
   for(var x in spendinghistory) {
     var d = spendinghistory[x].date; //date at transaction x
     var s = spendinghistory[x].amount; //spend at transaction x
@@ -47,7 +49,6 @@ function sortByDate() {
       var totals = datesbd[d]; //total spend for reason so far
       totals+= s;
       datesbd[d] = totals;
-      console.log(datesbd[d]);
     } else {
       datesbd[d] = s;
     }
