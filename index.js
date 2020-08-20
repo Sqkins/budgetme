@@ -62,6 +62,7 @@ io.on('connection', function(socket) {
   console.log('Made socket connection.');
   console.log(socket.id);
   socket.emit('reasons-data',reasons);
+  socket.emit('spending-data',spendinghistory);
   socket.on('add-reason',function(data){
     newReason(data);
   });
