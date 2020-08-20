@@ -42,6 +42,7 @@ con.connect(function(err) {
 
 //socket paths:
 //sending reason data from database ~ reasons-data
+var io = socket(server);
 io.on('connection', function(socket) {
   console.log('Made socket connection.');
   console.log(socket.id);
