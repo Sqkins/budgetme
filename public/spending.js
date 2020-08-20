@@ -1,6 +1,9 @@
 var spendinghistory = [];
 
 function addTransaction() {
+  var form = document.getElementById("form");
+  function handleForm(event) { event.preventDefault(); }
+  form.addEventListener('submit', handleForm);
   var reason = document.getElementById('options').value;
   var date = document.getElementById('date').value;
   var amount = document.getElementById('amount').value;
