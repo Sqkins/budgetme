@@ -2,8 +2,6 @@ var spendinghistory = [];
 // data ~ {reason : price}
 var reasonbreakdown = [];
 
-var sortedByReason = [];
-
 function addTransaction() {
   var reason = document.getElementById('options').value;
   var date = document.getElementById('date').value;
@@ -37,5 +35,4 @@ function sortByReason() {
       reasonsbd[r] = s;
     }
   }
-   reasonbreakdown = reasonsbd;
 }
