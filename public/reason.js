@@ -13,8 +13,8 @@ function updateReasons(){
   var sel = document.getElementById('select-option');
   for(var option in reasons) {
     var opt = document.createElement('option');
-    opt.appendChild( document.createTextNode(option) );
-    opt.value = option;
+    opt.appendChild( document.createTextNode(option.reason) );
+    opt.value = option.reason;
     sel.appendChild(opt);
   }
 }
