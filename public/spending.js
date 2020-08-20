@@ -18,8 +18,8 @@ function addTransaction() {
 function showTransactions() {
   var div = document.getElementById('transactions');
   div.innerHTML = "";
-  for(var x in spendinghistory) {
-    div.innerHTML += "<p>"+spendinghistory[x].reason+" "+spendinghistory[x].amount+" "+spendinghistory[x].date+"</p>";
+  for(var reason in sortedByReason) {
+    div.innerHTML += "<p>"+reason+" £"+sortedByReason[reason]+"</p>";
   }
 }
 
