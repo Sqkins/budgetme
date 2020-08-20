@@ -57,7 +57,7 @@ io.on('connection', function(socket) {
 });
 
 function newReason(reason) {
-  var sql = "INSERT INTO customers (reason) VALUES (\""+reason+"\")";
+  var sql = "INSERT INTO reasons (reason) VALUES (\""+reason+"\")";
   con.query(sql, function (err, result) {
     if ( !err ) {
       console.log(reason + ' has been added as a new reason!');
