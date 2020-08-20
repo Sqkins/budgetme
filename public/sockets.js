@@ -10,4 +10,5 @@ socket.on('spending-data',function(data) {
   console.log(data);
   spendinghistory = data;
   showTransactions();
+  sortByReason();
 });

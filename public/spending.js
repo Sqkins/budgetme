@@ -1,4 +1,6 @@
 var spendinghistory = [];
+// data ~ {reason : price}
+var reasonbreakdown = [];
 
 function addTransaction() {
   var reason = document.getElementById('options').value;
@@ -16,5 +18,21 @@ function showTransactions() {
   div.innerHTML = "";
   for(var x in spendinghistory) {
     div.innerHTML += "<p>"+spendinghistory[x].reason+" "+spendinghistory[x].amount+" "+spendinghistory[x].date+"</p>";
+  }
+}
+
+function sortByReason() {
+  var reasonsbd = [];
+  for(var x in spendinghistory) {
+    var r = spendinghistory[x].reason; //reason at transaction x
+    var s = spendinghistory[x].amount; //spend at transaction x
+    if (reasonsbd.hasOwnProperty(r)) {
+      var totals = reasonsbd[r]; //total spend for reason so far
+      totals+= s;
+      reasonsbd[r] = totals;
+      console.log(reasonsbd[r]);
+    } else {
+      reasonsbd[r] = s;
+    }
   }
 }
