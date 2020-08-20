@@ -9,4 +9,5 @@ socket.on('reasons-data',function(data) {
 socket.on('spending-data',function(data) {
   console.log(data);
   spendinghistory = data;
+  showTransactions();
 });

@@ -72,7 +72,6 @@ io.on('connection', function(socket) {
 });
 
 function addTransaction(data) {
-  console.log(data);
   var sql = "INSERT INTO transactions (reason,date,amount) VALUES (\""+data.reason+"\",\""+data.date+"\",\""+data.amount+"\")";
   con.query(sql, function (err, result) {
     if ( !err ) {
@@ -80,14 +79,13 @@ function addTransaction(data) {
       con.query(sql, function (err, result) {
         if ( !err ) {
           spendinghistory = result;
-          console.log(spendinghistory);
         } else if ( err ) {
           console.log(err);
         }
       });
       io.emit('spending-data',spendinghistory);
     } else if ( err ) {
-      console.log('error');
+      console.log(err);
     }
   });
 }
