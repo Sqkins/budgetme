@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="/css.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <title>Budget.me</title>
   </head>
   <body>
@@ -22,50 +23,6 @@
           <h2 class="w3-center">Weekly Spend</h2>
           <h1 class="w3-center w3-panel w3-light-blue w3-round-xlarge w3-half">Spent: £152.45 </h1>
           <h1 class="w3-center w3-panel w3-light-blue w3-round-xlarge w3-half">Left: £30.45 </h1>
-          <p id="piechart1" class="w3-half"></p>
-          <p id="piechart2" class="w3-half"></p>
-          <script type="text/javascript">
-            // Load google charts
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart1);
-            google.charts.setOnLoadCallback(drawChart2);
-            // Draw the chart and set the chart values
-            function drawChart1() {
-              var data = google.visualization.arrayToDataTable([
-              ['Task', 'Hours per Day'],
-              ['Work', 8],
-              ['Eat', 2],
-              ['TV', 4],
-              ['Gym', 2],
-              ['Sleep', 8]
-            ]);
-
-              // Optional; add a title and set the width and height of the chart
-              var options1 = {'title':'My Average Day'};
-
-              // Display the chart inside the <div> element with id="piechart"
-              var chart1 = new google.visualization.PieChart(document.getElementById('piechart1'));
-              chart1.draw(data1, options1);
-
-              // Draw the chart and set the chart values
-              function drawChart2() {
-                var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Work', 8],
-                ['Eat', 2],
-                ['TV', 4],
-                ['Gym', 2],
-                ['Sleep', 8]
-              ]);
-
-                // Optional; add a title and set the width and height of the chart
-                var options2 = {'title':'My Average Day'};
-
-                // Display the chart inside the <div> element with id="piechart"
-                var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
-                chart.draw(data2, options2);
-            }
-            </script>
         </div>
       </div>
 
@@ -74,12 +31,12 @@
         <div class="w3-container w3-teal">
           <h4>Add Reason</h4>
         </div>
-        <form class="w3-container" action="formSubmit(this);">
+        <form class="w3-container">
           <p>
           <label class="w3-text-teal"><b>Reason</b></label>
           <input class="w3-input w3-border" type="text"></p>
           <p>
-          <button class="w3-btn w3-teal">Submit</button></p>
+          <button class="w3-btn w3-teal" onclick="addReason();">Submit</button></p>
         </form>
       </div>
       <div class="w3-half">
@@ -114,6 +71,6 @@
     </div>
 
   </body>
-
-
+<script src="reason.js" charset="utf-8"></script>
+<script src="sockets.js" charset="utf-8"></script>
 </html>

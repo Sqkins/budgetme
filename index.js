@@ -29,12 +29,20 @@ con.connect(function(err) {
   } else if ( err ) {
     console.log(err);
   }
-  var sql = "SELECT * FROM transactions";
+  var sql = "SELECT * FROM reasons";
   con.query(sql, function (err, result) {
     if ( !err ) {
-      console.log(result);
+      socket.emit('reasons-data')
     } else if ( err ) {
       console.log(err);
     }
   });
+});
+
+
+//socket paths:
+//sending reason data from database ~ reasons-data
+io.on('connection', function(socket) {
+  console.log('Made socket connection.');
+  console.log(socket.id);
 });
