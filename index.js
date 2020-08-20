@@ -37,15 +37,26 @@ con.connect(function(err) {
       console.log(err);
     }
   });
+  var sql = "SELECT * FROM transactions";
+  con.query(sql, function (err, result) {
+    if ( !err ) {
+      spendinghistory = result;
+    } else if ( err ) {
+      console.log(err);
+    }
+  });
 });
 
 //variables
 
 var reasons = [];
+var spendinghistory = [];
 
 //socket paths:
 //sending reason data from database ~ reasons-data
 //adding a reason ~ add-reason (data = 'reason')
+//sending clients spendinghistory ~ spending-data (data = 'reason','amount','date')
+//sending a new transaction ~ new-transaction (data = 'reason','amount','date')
 var io = socket(server);
 io.on('connection', function(socket) {
   console.log('Made socket connection.');
@@ -53,8 +64,32 @@ io.on('connection', function(socket) {
   socket.emit('reasons-data',reasons);
   socket.on('add-reason',function(data){
     newReason(data);
-  })
+  });
+  socket.on('new-transaction',function(data){
+    addTransaction(data);
+  });
 });
+
+function addTransaction(data) {
+  console.log(data);
+  var sql = "INSERT INTO transactions (reason,date,amount) VALUES (\""+data.reason+"\",\""+data.date+"\",\""+data.amount+"\")";
+  con.query(sql, function (err, result) {
+    if ( !err ) {
+      var sql = "SELECT * FROM transactions";
+      con.query(sql, function (err, result) {
+        if ( !err ) {
+          spendinghistory = result;
+        } else if ( err ) {
+          console.log(err);
+        }
+      });
+      io.emit('spending-data',spendinghistory);
+    } else if ( err ) {
+      console.log(err);
+    }
+  });
+}
+
 
 function newReason(reason) {
   var sql = "INSERT INTO reasons (reason) VALUES (\""+reason+"\")";

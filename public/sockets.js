@@ -5,3 +5,8 @@ socket.on('reasons-data',function(data) {
   reasons = data;
   updateReasons();
 });
+
+socket.on('spending-data',function(data) {
+  console.log(data);
+  spendinghistory = data;
+});
