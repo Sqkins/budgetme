@@ -1,8 +1,10 @@
 var spendinghistory = [];
-// data ~ {reason : price}
+// data ~ {reason : spend}
 var reasonbreakdown = [];
-// data ~ {date : price}
+// data ~ {date : spend}
 var datebreakdown = [];
+//data ~ {reason : spend}
+var thisweek = [];
 
 function addTransaction() {
   var reason = document.getElementById('options').value;
@@ -15,10 +17,10 @@ function showTransactions() {
   var div = document.getElementById('transactions');
   div.innerHTML = "";
   for(var reason in reasonbreakdown) {
-    div.innerHTML += "<p>"+reason+" £"+reasonbreakdown[reason]+"</p>";
+    div.innerHTML += "<p>"+reason+" £"+reasonbreakdown[reason].toFixed(2)+"</p>";
   }
   for(var date in datebreakdown) {
-    div.innerHTML += "<p>"+date+" £"+datebreakdown[date]+"</p>";
+    div.innerHTML += "<p>"+date+" £"+datebreakdown[date].toFixed(2)+"</p>";
   }
 }
 
@@ -54,4 +56,13 @@ function sortByDate() {
     }
   }
   datebreakdown = datesbd;
+}
+
+function isThisWeek(d) {
+  // start and end of this week
+  var thisWeek = [moment().utc().startOf('week'),
+                  moment().utc().endOf('week')];
+  return d.isBetween(thisWeek[0],thisWeek[1])||
+  d.isSame(thisWeek[0])||
+  d.isSame(thisWeek[1]);
 }
