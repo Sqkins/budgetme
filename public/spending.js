@@ -77,7 +77,7 @@ function thisWeekSort() {
       if (thisweekdate.hasOwnProperty(date)) {
         var totals = reasonsbd[date]; //total spend for date so far
         totals+= obj.amount;
-        thisweekdate[.date] = totals;
+        thisweekdate[date] = totals;
       } else {
         thisweekdate[date] = obj.amount;
       }
