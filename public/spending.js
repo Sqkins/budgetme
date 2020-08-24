@@ -34,7 +34,7 @@ function showTransactions() {
     if(weekdays.hasOwnProperty(day)) { //if money spent on 'day' set amount to the spend
       amount = weekdays[day];
     }
-    weeks_byreason.innerHTML += day + ": £" + amount.toFixed(2); //add html
+    week_byreason.innerHTML += day + ": £" + amount.toFixed(2); //add html
   }
 }
 
