@@ -17,11 +17,6 @@
   padding: 14px 16px;
   font-size: 17px;
   width: 50%;
-  position: relative;
-}
-.tabcontent {
-  border: 5px solid #009688;
-  position: relative;
 }
 .activetab {
   background-color: #009688;
