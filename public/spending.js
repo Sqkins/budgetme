@@ -27,7 +27,7 @@ function showTransactions() {
   week_totalspend.innerHTML = "Spent: £"+weektotal.toFixed(2); //set the week total spend
   for (var reason in weekreasons) { //loop through the reasons for this week
     var amount = weekreasons[reason]; //get amount for reason
-    week_byreason.innerHTML += "<<p style=\"padding:5px;\">"+reason + ": £" + amount.toFixed(2)+"</p><hr>"; //add html
+    week_byreason.innerHTML += "<p style=\"padding:5px;\">"+reason + ": £" + amount.toFixed(2)+"</p><hr>"; //add html
   }
   for (var x in weekdaylist) { //loop through days in a week
     var amount = 0; //default amount
