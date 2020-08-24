@@ -15,7 +15,6 @@ function drawChart() {
   var options = {
     title: 'My Daily Activities',
     chartArea: {
-      left: 40,
       width: '100%'
     },
     width: '100%'
