@@ -34,6 +34,7 @@ function showTransactions() {
     if(weekdays.hasOwnProperty(day)) { //if money spent on 'day' set amount to the spend
       amount = weekdays[day];
     }
+    console.log(day);
     week_byday.innerHTML += day + ": £" + amount.toFixed(2); //add html
   }
 }
@@ -79,7 +80,7 @@ function thisWeekSort() {
     var obj = spendinghistory[x];
     if(isThisWeek(obj.date)) {
       thisweek.push(obj);
-      thisweektotal =+ obj.amount;
+      thisweektotal += obj.amount;
       if (thisweekreasons.hasOwnProperty(obj.reason)) {
         var totals = reasonsbd[obj.reason]; //total spend for reason so far
         totals+= obj.amount;
@@ -88,6 +89,7 @@ function thisWeekSort() {
         thisweekreasons[obj.reason] = obj.amount;
       }
       var date = moment(obj.date).format('dddd');
+      console.log(date);
       if (thisweekdays.hasOwnProperty(date)) {
         var totals = reasonsbd[date]; //total spend for date so far
         totals+= obj.amount;
