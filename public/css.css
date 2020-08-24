@@ -16,7 +16,7 @@
   cursor: pointer;
   padding: 14px 16px;
   font-size: 17px;
-  position:absolute;
+  width: 50%;
 }
 .tabcontent {
   border: 5px solid #009688;
