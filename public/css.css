@@ -18,3 +18,9 @@
   font-size: 17px;
   width: 50%;
 }
+.tabcontent {
+  border: 5px solid #009688;
+}
+.activetab {
+  background-color: #009688;
+}

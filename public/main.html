@@ -23,13 +23,13 @@
         <div class="w3-card-4">
           <h2 class="w3-center">Weekly Spend</h2>
           <h4 class="w3-center" id="week-totalspend"></h4>
-          <a class="tablink w3-half w3-teal" onclick="openPage('week-byreason')">Breakdown Days</a>
-          <a class="tablink w3-half w3-teal" onclick="openPage('week-byday')">Breakdown Reasons</a>
+          <a class="tablink w3-half w3-light-grey" onclick="openPage('week-byreason',this)">Breakdown Days</a>
+          <a class="tablink w3-half w3-light-grey" onclick="openPage('week-byday',this)"  id="defaulttab">Breakdown Reasons</a>
           <div id="transactions">
             <div class="tabcontent" style="margin: 5px;" id="week-byreason">
               <hr>
             </div>
-            <div class="tabcontent" style="margin: 5px;" id="week-byday">
+            <div class="tabcontent activetab" style="margin: 5px;" id="week-byday">
                 <hr>
             </div>
           </div>
@@ -82,17 +82,22 @@
 <script src="sockets.js" charset="utf-8"></script>
 <script src="spending.js" charset="utf-8"></script>
 <script type="text/javascript">
-function openPage(pageName) {
+function openPage(pageName,element) {
   // Hide all elements with class="tabcontent" by default */
   var i, tabcontent,
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
+  var tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].classList.remove("activetab");
+  }
+  element.classList.add("activetab");
 
   // Show the specific tab content
   document.getElementById(pageName).style.display = "block";
   }
-  document.getElementById("week-byday").click();
+  document.getElementById("defaulttab").click();
 </script>
 </html>
