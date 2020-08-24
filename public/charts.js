@@ -14,12 +14,10 @@ function drawChart() {
 
   var options = {
     title: 'My Daily Activities',
-    chartArea: {
-      width: '100%'
-    },
-    width: '100%',
     pieHole: 0.4
   };
+
+   options.chartArea = {left:0, 'width': '80%', 'height': '80%'}
 
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
