@@ -15,5 +15,6 @@ var options = {
   pieHole: 0.4,
 };
 var element = document.getElementById('piechart');
+console.log(element);
 var chart = new google.visualization.PieChart(element);
 chart.draw(data, options);
