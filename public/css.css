@@ -17,7 +17,7 @@
   padding: 14px 16px;
   font-size: 17px;
   width: 50%;
-  position: relative;
+  position:absolute; top:0; left:0;
 }
 .tabcontent {
   border: 5px solid #009688;
