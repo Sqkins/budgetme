@@ -24,13 +24,13 @@
 
           <h2 class="w3-center">Weekly Spend</h2>
           <h4 class="w3-center" id="week-totalspend"></h4>
-          <button class="w3-half w3-teal" onclick="openPage('week-byreason')">Breakdown Days</button>
-          <button class="w3-half w3-teal" onclick="openPage('week-byday')">Breakdown Reasons</button>
+          <button class="w3-btn w3-half w3-teal" onclick="openPage('week-byreason')">Breakdown Days</button>
+          <button class="w3-btn w3-half w3-teal" onclick="openPage('week-byday')">Breakdown Reasons</button>
           <div id="transactions">
-            <div class="w3-card-4" style="margin: 5px;" id="week-byreason">
+            <div class="w3-card-4 tabcontent" style="margin: 5px;" id="week-byreason">
               <hr>
             </div>
-            <div class="w3-card-4" style="margin: 5px;" id="week-byday">
+            <div class="w3-card-4 tabcontent" style="margin: 5px;" id="week-byday">
                 <hr>
             </div>
           </div>
@@ -94,5 +94,6 @@ function openPage(pageName, elmnt, color) {
   // Show the specific tab content
   document.getElementById(pageName).style.display = "block";
   }
+  document.getElementById("week-byday").click();
 </script>
 </html>
