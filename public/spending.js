@@ -83,7 +83,7 @@ function thisWeekSort() {
       thisweek.push(obj);
       thisweektotal += obj.amount;
       if (thisweekreasons.hasOwnProperty(obj.reason)) {
-        var totals = reasonsbd[obj.reason]; //total spend for reason so far
+        var totals = thisweekreasons[obj.reason]; //total spend for reason so far
         totals+= obj.amount;
         thisweekreasons[obj.reason] = totals;
       } else {
@@ -92,7 +92,7 @@ function thisWeekSort() {
       var date = moment(obj.date).format('dddd');
       console.log(date);
       if (thisweekdays.hasOwnProperty(date)) {
-        var totals = reasonsbd[date]; //total spend for date so far
+        var totals = thisweekdays[date]; //total spend for date so far
         totals+= obj.amount;
         thisweekdays[date] = totals;
       } else {
