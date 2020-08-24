@@ -27,14 +27,14 @@ function showTransactions() {
   week_totalspend.innerHTML = "Spent: £"+weektotal.toFixed(2); //set the week total spend
   for (var reason in weekreasons) { //loop through the reasons for this week
     var amount = weekreasons[reason]; //get amount for reason
-    weeks_byreason.innerHTML += reason + ": £" + amount.toFixed(2); //add html
+    week_byreason.innerHTML += reason + ": £" + amount.toFixed(2); //add html
   }
   for (var day in weekdaylist) { //loop through days in a week
     var amount = 0; //default amount
     if(weekdays.hasOwnProperty(day)) { //if money spent on 'day' set amount to the spend
       amount = weekdays[day];
     }
-    week_byreason.innerHTML += day + ": £" + amount.toFixed(2); //add html
+    week_byday.innerHTML += day + ": £" + amount.toFixed(2); //add html
   }
 }
 
