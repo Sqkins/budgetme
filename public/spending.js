@@ -59,9 +59,14 @@ function sortByDate() {
 }
 
 function thisWeekSort() {
+  var thisweek = [];
   for(var x in spendinghistory) {
-    console.log(spendinghistory[x]);
+    var obj = spendinghistory[x];
+    if(isThisWeek(obj.date)) {
+      thisweek.push(obj);
+    }
   }
+  console.log(thisweek);
 }
 
 function isThisWeek(d) {
