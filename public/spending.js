@@ -60,6 +60,7 @@ function thisWeekSort() {
   var thisweek = [];
   var thisweektotal = 0;
   var thisweekreasons = [];
+  var thisweekdate = []
   for(var x in spendinghistory) {
     var obj = spendinghistory[x];
     if(isThisWeek(obj.date)) {
@@ -72,11 +73,20 @@ function thisWeekSort() {
       } else {
         thisweekreasons[obj.reason] = obj.amount;
       }
+      var date = moment(obj.date).format('dddd');
+      if (thisweekdate.hasOwnProperty(date)) {
+        var totals = reasonsbd[date]; //total spend for date so far
+        totals+= obj.amount;
+        thisweekdate[.date] = totals;
+      } else {
+        thisweekdate[date] = obj.amount;
+      }
     }
   }
   console.log(thisweek);
   console.log(thisweektotal);
   console.log(thisweekreasons);
+  console.log(thisweekdate);
 }
 
 function isThisWeek(d) {
