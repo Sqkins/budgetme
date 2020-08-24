@@ -22,9 +22,12 @@
       <div class="w3-container" style="height:100%;">
         <div class="w3-card-4">
           <h2 class="w3-center">Weekly Spend</h2>
+          <div id="donutchart">
+
+          </div>
           <h4 class="w3-center" id="week-totalspend"></h4>
-            <a class="tablink w3-half w3-light-grey" onclick="openPage('week-byreason',this)">Breakdown Days</a>
-            <a class="tablink w3-half w3-light-grey activetab" onclick="openPage('week-byday',this)"  id="defaulttab">Breakdown Reasons</a><br><br>
+            <a class="tablink w3-half w3-light-grey" onclick="openPage('week-byday',this)" id="defaulttab">Breakdown Days</a>
+            <a class="tablink w3-half w3-light-grey activetab" onclick="openPage('week-byreason',this)"  >Breakdown Reasons</a><br><br>
             <div class="tabcontent" style="margin: 5px;" id="week-byreason">
               <hr>
             </div>
@@ -79,6 +82,7 @@
 <script src="reason.js" charset="utf-8"></script>
 <script src="sockets.js" charset="utf-8"></script>
 <script src="spending.js" charset="utf-8"></script>
+<script src="charts.js" charset="utf-8"></script>
 <script type="text/javascript">
 function openPage(pageName,element) {
   // Hide all elements with class="tabcontent" by default */
