@@ -9,7 +9,7 @@ function drawChart() {
     ['Watch TV', 2],
     ['Sleep',    7]
   ]);
-
+}
 var options = {
   title: 'My Daily Activities',
   pieHole: 0.4,
