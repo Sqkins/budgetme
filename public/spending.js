@@ -27,7 +27,7 @@ function showTransactions() {
   week_totalspend.innerHTML = "Spent: £"+weektotal.toFixed(2); //set the week total spend
   for (var reason in weekreasons) { //loop through the reasons for this week
     var amount = weekreasons[reason]; //get amount for reason
-    week_byreason.innerHTML += "<p>"+reason + ": £" + amount.toFixed(2)+"</p>"; //add html
+    week_byreason.innerHTML += "<p class="w3-panel w3-blue">"+reason + ": £" + amount.toFixed(2)+"</p>"; //add html
   }
   for (var x in weekdaylist) { //loop through days in a week
     var amount = 0; //default amount
@@ -35,8 +35,7 @@ function showTransactions() {
     if(weekdays.hasOwnProperty(day)) { //if money spent on 'day' set amount to the spend
       amount = weekdays[day];
     }
-    console.log(day);
-    week_byday.innerHTML += "<p>"+day + ": £" + amount.toFixed(2)+"</p>"; //add html
+    week_byday.innerHTML += "<p class="w3-panel w3-blue">"+day + ": £" + amount.toFixed(2)+"</p>"; //add html
   }
 }
 
@@ -90,7 +89,6 @@ function thisWeekSort() {
         thisweekreasons[obj.reason] = obj.amount;
       }
       var date = moment(obj.date).format('dddd');
-      console.log(date);
       if (thisweekdays.hasOwnProperty(date)) {
         var totals = thisweekdays[date]; //total spend for date so far
         totals+= obj.amount;
