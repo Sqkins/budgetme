@@ -4,7 +4,13 @@ var reasonbreakdown = [];
 // data ~ {date : spend}
 var datebreakdown = [];
 //data ~ {reason : spend}
-var thisweek = [];
+var week = [];
+//total spend for current week
+var weektotal = 0;
+//this weeks breakdown by reason
+var weekreasons = [];
+//this weeks breakdown by day
+var weekdays = []
 
 function addTransaction() {
   var reason = document.getElementById('options').value;
@@ -14,13 +20,21 @@ function addTransaction() {
 }
 
 function showTransactions() {
-  var div = document.getElementById('transactions');
-  div.innerHTML = "";
-  for(var reason in reasonbreakdown) {
-    div.innerHTML += "<p>"+reason+" £"+reasonbreakdown[reason].toFixed(2)+"</p>";
+  var weekdaylist = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]; //list of weekdays
+  var week_totalspend = document.getElementById('week-totalspend'); // get divs for data input
+  var week_byreason = document.getElementById('week-byreason');
+  var week_byday = document.getElementById('week-byday');
+  week_totalspend.innerHTML = "Spent: £"+weektotal.toFixed(2); //set the week total spend
+  for (var reason in weekreasons) { //loop through the reasons for this week
+    var amount = weekreasons[reason]; //get amount for reason
+    weeks_byreason.innerHTML += reason + ": £" + amount.toFixed(2); //add html
   }
-  for(var date in datebreakdown) {
-    div.innerHTML += "<p>"+date+" £"+datebreakdown[date].toFixed(2)+"</p>";
+  for (var day in weekdaylist) { //loop through days in a week
+    var amount = 0; //default amount
+    if(weekdays.hasOwnProperty(day)) { //if money spent on 'day' set amount to the spend
+      amount = weekdays[day];
+    }
+    weeks_byreason.innerHTML += day + ": £" + amount.toFixed(2); //add html
   }
 }
 
@@ -60,7 +74,7 @@ function thisWeekSort() {
   var thisweek = [];
   var thisweektotal = 0;
   var thisweekreasons = [];
-  var thisweekdate = []
+  var thisweekdays = []
   for(var x in spendinghistory) {
     var obj = spendinghistory[x];
     if(isThisWeek(obj.date)) {
@@ -74,19 +88,19 @@ function thisWeekSort() {
         thisweekreasons[obj.reason] = obj.amount;
       }
       var date = moment(obj.date).format('dddd');
-      if (thisweekdate.hasOwnProperty(date)) {
+      if (thisweekdays.hasOwnProperty(date)) {
         var totals = reasonsbd[date]; //total spend for date so far
         totals+= obj.amount;
-        thisweekdate[date] = totals;
+        thisweekdays[date] = totals;
       } else {
-        thisweekdate[date] = obj.amount;
+        thisweekdays[date] = obj.amount;
       }
     }
   }
-  console.log(thisweek);
-  console.log(thisweektotal);
-  console.log(thisweekreasons);
-  console.log(thisweekdate);
+  week = thisweek;
+  weektotal = thisweektotal;
+  weekreasons = thisweekreasons;
+  weekdays = thisweekdays;
 }
 
 function isThisWeek(d) {
