@@ -13,7 +13,12 @@ function drawChart() {
   ]);
 
   var options = {
-    title: 'My Daily Activities'
+    title: 'My Daily Activities',
+    chartArea: {
+      left: 40,
+      width: '100%'
+    },
+    width: '100%'
   };
 
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
