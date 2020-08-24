@@ -26,7 +26,6 @@ function showTransactions() {
 
 function sortByReason() {
   var reasonsbd = [];
-  console.log('sorting by reasons');
   for(var x in spendinghistory) {
     var r = spendinghistory[x].reason; //reason at transaction x
     var s = spendinghistory[x].amount; //spend at transaction x
@@ -43,7 +42,6 @@ function sortByReason() {
 
 function sortByDate() {
   var datesbd = [];
-  console.log('sorting by dates');
   for(var x in spendinghistory) {
     var d = spendinghistory[x].date; //date at transaction x
     var s = spendinghistory[x].amount; //spend at transaction x
@@ -60,13 +58,25 @@ function sortByDate() {
 
 function thisWeekSort() {
   var thisweek = [];
+  var thisweektotal = 0;
+  var thisweekreasons = [];
   for(var x in spendinghistory) {
     var obj = spendinghistory[x];
     if(isThisWeek(obj.date)) {
       thisweek.push(obj);
+      thisweektotal =+ obj.amount;
+      if (thisweekreasons.hasOwnProperty(obj.reason)) {
+        var totals = reasonsbd[obj.reason]; //total spend for reason so far
+        totals+= obj.amount;
+        thisweekreasons[obj.reason] = totals;
+      } else {
+        thisweekreasons[obj.reason] = obj.amount;
+      }
     }
   }
   console.log(thisweek);
+  console.log(thisweektotal);
+  console.log(thisweekreasons);
 }
 
 function isThisWeek(d) {
