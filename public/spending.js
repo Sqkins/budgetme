@@ -58,11 +58,13 @@ function sortByDate() {
   datebreakdown = datesbd;
 }
 
+function thisWeekSort() {
+  for(var x in spendinghistory) {
+    console.log(spendinghistory[x]);
+  }
+}
+
 function isThisWeek(d) {
-  // start and end of this week
-  var thisWeek = [moment().utc().startOf('week'),
-                  moment().utc().endOf('week')];
-  return d.isBetween(thisWeek[0],thisWeek[1])||
-  d.isSame(thisWeek[0])||
-  d.isSame(thisWeek[1]);
+  var result = moment(d).isSame(new Date(), 'week');
+  return result;
 }
