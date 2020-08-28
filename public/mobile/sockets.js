@@ -11,6 +11,6 @@ socket.on('spending-data',function(data) {
   sortByDate();
   thisWeekSort();
 
-
+  updateReasons();
   showTransactions();
 });
