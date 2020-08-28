@@ -14,7 +14,14 @@ app.use(express.static('public/main'));
 app.use(express.static('public/mobile'));
 app.use(express.static('icon'));
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/main/main.html'));
+  var ua = req.header('user-agent');
+    // Check the user-agent string to identyfy the device.
+    if(/mobile|iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile|ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(ua)) {
+        res.redirect("http://134.122.109.226/mobile/");
+    } else {
+      res.sendFile(path.join(__dirname + '/public/main/main.html'));
+    }
+
 });
 app.get('/mobile', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/mobile/mobile.html'));
