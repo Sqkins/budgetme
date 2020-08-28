@@ -14,36 +14,26 @@
   <header class="w3-top w3-bar theme">
     <h1 class="w3-bar-item">Budgetme</h1>
   </header>
+  <nav class="w3-bar-block w3-center theme-l2" style="margin-top:90px">
+    <a class="w3-bar-item tablink"  onclick="openPage('week-byday-content',this)" id="defaulttab">Weekdays</a>
+    <a class="w3-bar-item tablink"  onclick="openPage('week-byreason-content',this)">Reasons</a>
+  </nav>
+  <div class="w3-container">
+    <div class="tabcontent" style="margin: 5px;" id="week-byreason-content">
+      <div class="w3-half" id="week-byreason">
+        <hr>
+      </div>
+      <div class="w3-half">
+      </div>
+    </div>
+    <div class="tabcontent" style="margin: 5px;" id="week-byday-content">
+      <div class="w3-half" id="week-byday">
+        <hr>
+      </div>
+      <div class="w3-half" >
 
-  <div class="w3-container" style="margin-top:90px">
-  <hr>
-  <div class="w3-cell-row">
-    <div class="w3-cell" style="width:30%">
+      </div>
     </div>
-    <div class="w3-cell w3-container">
-      <h3>Frozen</h3>
-      <p>The response to the animations was ridiculous.</p>
-    </div>
-  </div>
-  <hr>
-  <div class="w3-cell-row">
-    <div class="w3-cell" style="width:30%">
-    </div>
-    <div class="w3-cell w3-container">
-      <h3>The Fault in Our Stars</h3>
-      <p>Touching, gripping and genuinely well made.</p>
-    </div>
-  </div>
-  <hr>
-  <div class="w3-cell-row">
-    <div class="w3-cell" style="width:30%">
-    </div>
-    <div class="w3-cell w3-container">
-      <h3>The Avengers</h3>
-      <p>A huge success for Marvel and Disney.</p>
-    </div>
-  </div>
-  <hr>
   </div>
 
   <footer class="w3-container w3-bottom theme w3-margin-top">
@@ -51,4 +41,26 @@
   </footer>
 
   </body>
+  <script src="reason.js" charset="utf-8"></script>
+  <script src="sockets.js" charset="utf-8"></script>
+  <script src="spending.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  function openPage(pageName,element) {
+    // Hide all elements with class="tabcontent" by default */
+    var i, tabcontent;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    var tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove("theme-d1");
+    }
+    element.classList.add("theme-d1");
+
+    // Show the specific tab content
+    document.getElementById(pageName).style.display = "block";
+    }
+    document.getElementById("defaulttab").click();
+  </script>
 </html>
