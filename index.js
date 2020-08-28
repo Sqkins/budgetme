@@ -106,6 +106,7 @@ function addTransaction(data) {
 
 
 function newReason(data) {
+  console.log(data);
   var sql = "INSERT INTO reasons (reason,budget) VALUES (\""+data.reason+"\","+data.budget+")";
   con.query(sql, function (err, result) {
     if ( !err ) {
