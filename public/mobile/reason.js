@@ -2,9 +2,9 @@ var reasons = [];
 
 
 function addReason() {
-  var input = document.getElementById('new-reason')
-  var budget = document.getElementById('new-reason-budget');
-  socket.emit('add-reason',{input.value,budget.value});
+  var input = document.getElementById('new-reason').value;
+  var budget = document.getElementById('new-reason-budget').value;
+  socket.emit('add-reason',{input,budget});
   updateReasons();
 }
 
