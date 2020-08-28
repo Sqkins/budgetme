@@ -37,7 +37,7 @@ function showTransactions() {
   week_totalspend.innerHTML = "Spent: £"+weektotal.toFixed(2); //set the week total spend
   for (var reason in weekreasons) { //loop through the reasons for this week
     var amount = weekreasons[reason]; //get amount for reason
-    week_byreason.innerHTML += returnHTMLReasons(amount.toFixed(2),reason); //add html
+    week_byreason.innerHTML += returnHTMLReasons(amount.toFixed(2),reason,getBudget(reason)); //add html
   }
   for (var x in weekdaylist) { //loop through days in a week
     var amount = 0; //default amount
@@ -117,4 +117,14 @@ function thisWeekSort() {
 function isThisWeek(d) {
   var result = moment(d).isSame(new Date(), 'week');
   return result;
+}
+
+function getBudget(reason) {
+  var budget;
+  for(var i in reasons) {
+    if(reasons[i].reason === reason) {
+      budget = reasons[i].budget;
+    }
+  }
+  return budget;
 }
