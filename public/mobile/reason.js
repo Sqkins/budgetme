@@ -26,5 +26,16 @@ function updateReasons(){
     var text = returnHTMLBudget(reason.id,reason.reason,reason.budget);
     editbudgetpanel.innerHTML+= text;
   }
+}
 
+function editBudget(idstring) {
+  var index = parseInt(idstring.substring(6));
+  var budget = parseInt(document.getElementById(idstring).value);
+  var reason;
+  for(var i in reasons) {
+    if(reasons[i].id === index) {
+      reason = reasons[i].reason;
+    }
+  }
+  socket.emit('edit-budget',{reason,budget});
 }
