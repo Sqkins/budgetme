@@ -127,7 +127,7 @@ function newReason(data) {
 }
 
 function editBudget(data) {
-  var sql = "UPDATE reasons SET budget = "+data.budget+"WHERE reason = "+data.reason;
+  var sql = "UPDATE reasons SET budget = "+data.budget+" WHERE reason = "+data.reason;
   con.query(sql, function (err, result) {
     if ( !err ) {
       console.log(data.reason + 'with budget £'+data.budget+' has been updated!');
