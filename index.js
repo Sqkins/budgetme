@@ -12,6 +12,7 @@ var server = app.listen(80, function() {
 app.use(express.static('public'));
 app.use(express.static('public/main'));
 app.use(express.static('public/mobile'));
+app.use(express.static('icon'));
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/main/main.html'));
 });
