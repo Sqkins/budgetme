@@ -107,7 +107,7 @@ function addTransaction(data) {
 
 function newReason(data) {
   console.log(data);
-  var sql = "INSERT INTO reasons (reason,budget) VALUES (\""+data.reason+"\","+data.budget+")";
+  var sql = "INSERT INTO reasons (reason,budget) VALUES (\""+data.input+"\","+data.budget+")";
   con.query(sql, function (err, result) {
     if ( !err ) {
       console.log(data.reason + 'with budget £'+data.budget+' has been added as a new reason!');

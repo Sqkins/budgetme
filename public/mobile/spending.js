@@ -13,8 +13,10 @@ var weekreasons = [];
 var weekdays = []
 
 var cardhtml = "";
-function returnHTMLReasons(amount,mastertext) {
-  return "<div class=\"w3-container\"><div class=\"w3-cell-row\"><h3 class=\"w3-cell\" style=\"width:60%;\">"+mastertext+"</h3><h4 class=\"text-theme w3-cell\" style=\"text-align:right;\">-£"+amount+"</h4></div><div class=\"w3-cell-row\"><p class=\"w3-cell\">50% Used | Remaining:</p><p class=\"w3-cell\" style=\"text-align:right;\">£30</p></div></div><hr>";
+function returnHTMLReasons(amount,mastertext,budget) {
+  var percentused = ((amount/budget)*100).toFixed(1);
+  var leftover = (budget-amount).toFixed(2);
+  return "<div class=\"w3-container\"><div class=\"w3-cell-row\"><h3 class=\"w3-cell\" style=\"width:60%;\">"+mastertext+"</h3><h4 class=\"text-theme w3-cell\" style=\"text-align:right;\">-£"+amount+"</h4></div><div class=\"w3-cell-row\"><p class=\"w3-cell\">"+percentused+"% Used | Remaining:</p><p class=\"w3-cell\" style=\"text-align:right;\">£"+leftover+"</p></div></div><hr>";
 }
 function returnHTMLWeekdays(amount,mastertext) {
   return "<div class=\"w3-container\">  <div class=\"w3-cell-row\"><h3 class=\"w3-cell\" style=\"width:60%;\">"+mastertext+"</h3><h4 class=\"text-theme w3-cell\" style=\"text-align:right;\">-£"+amount+"</h4>  </div></div><hr>";
