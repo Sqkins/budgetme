@@ -14,7 +14,7 @@ var weekdays = []
 
 var cardhtml = "";
 function returnHTMLString(amount,mastertext) {
-  return "<div class=\"w3-container\"><div class=\"w3-cell-row\"><h3 class=\"w3-cell\" style=\"width:60%;\">"+mastertext+"</h3><h4 class=\"text-theme w3-cell\" style=\"text-align:right;\">"+amount+"</h4></div></div><hr>";
+  return "<div class=\"w3-container\"><div class=\"w3-cell-row\"><h3 class=\"w3-cell\" style=\"width:60%;\">"+mastertext+"</h3><h4 class=\"text-theme w3-cell\" style=\"text-align:right;\">-£"+amount+"</h4></div><div class=\"w3-cell-row\"><p class=\"w3-cell\">50% Used | Remaining:</p><p class=\"w3-cell\" style=\"text-align:right;\">£30</p></div></div><hr>";
 }
 
 function addTransaction() {
