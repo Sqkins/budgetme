@@ -19,6 +19,10 @@ function drawWeekdayChart() {
     var options = {
       vAxis: {
         title: 'Spend (£)'
+      },
+      legend: {
+          textStyle: { color: '#0d69f2' },
+          fontName: 'Verdana'
       }
     };
 
@@ -33,7 +37,7 @@ function drawReasonChart() {
   google.charts.load('current', {packages: ['corechart', 'bar']});
   google.charts.setOnLoadCallback(function() {
     var array = [
-      ['Reason','Spend', {  role: 'annotation'  }]
+      ['Reason','Spend', {  role: 'annotation'  }, {  role: 'tooltip' }]
     ];
     for(var x in reasons) {
       var r = reasons[x].reason;
@@ -41,7 +45,7 @@ function drawReasonChart() {
       if(amount == null) {
         amount = 0;
       }
-      array.push([r,amount,'£'+amount.toFixed(2).toString()]);
+      array.push([r,amount,'£'+amount.toFixed(2).toString(),'£'+amount.toFixed(2).toString()]);
     }
     var data = google.visualization.arrayToDataTable(array);
     var options = {
@@ -49,7 +53,11 @@ function drawReasonChart() {
         title: 'Spend (£)'
       },
       chartArea:{left: 30, right: 60,width:'100%',height:'100%'},
-      is3D: true
+      is3D: true,
+      legend: {
+          textStyle: { color: '#0d69f2' },
+          fontName: 'Verdana'
+      }
     };
 
     var chart = new google.visualization.PieChart(
