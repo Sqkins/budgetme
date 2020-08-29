@@ -13,4 +13,5 @@ socket.on('spending-data',function(data) {
 
   updateReasons();
   showTransactions();
+  drawCharts()
 });

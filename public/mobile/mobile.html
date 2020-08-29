@@ -12,6 +12,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="http://134.122.109.226/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="charts.js" charset="utf-8"></script>
     <title>Budgetme | Mobile</title>
   </head>
 
@@ -27,15 +28,16 @@
     <p>Track your weekly spend, select either button above to see breakdowns by day of the week or by reason.</p>
     <h4 class="w3-center" id="week-totalspend"></h4>
     <div class="tabcontent" style="margin: 5px;" id="week-byreason-content">
-      <div id="week-byreason" class="w3-card w3-round-xlarge">
-        <hr>
-
+      <div class="w3-card w3-round-xlarge">
+        <div id="week-byreason">  <hr></div>
+        <div id="reason_chart"></div> <hr>
       </div>
 
     </div>
     <div class="tabcontent" style="margin: 5px;" id="week-byday-content">
-      <div id="week-byday" class="w3-card w3-round-xlarge">
-        <hr>
+      <div class="w3-card w3-round-xlarge">
+
+        <div id="week-byday"><hr>  </div>
         <!--<div class="w3-container">
           <div class="w3-cell-row">
             <h3 class="w3-cell" style="width:60%;">Food Shop</h3>
@@ -46,8 +48,11 @@
             <p class="w3-cell" style="text-align:right;">£30</p>
           </div>
         </div><hr> --> <!-- IDEA: This is the html template for the cards -->
+        <div id="weekday_chart"></div> <hr>
       </div>
+
     </div>
+
   </div>
 
   <div class="w3-container">

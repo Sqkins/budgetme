@@ -1,25 +1,58 @@
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+function drawCharts() {
+  drawWeekdayChart();drawReasonChart();
+}
+function drawWeekdayChart() {
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(function() {
+    var weekdaylist = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+    var array = [
+      ['Weekday','Spend', { role: 'style' }, {  role: 'annotation'  }]
+    ];
+    for(var day in weekdaylist) {
+      var amount = weekdays[weekdaylist[day]];
+      if(amount == null) {
+        amount = 0;
+      }
+      array.push([weekdaylist[day],amount,'0d69f2','£'+amount.toFixed(2).toString()])
+    }
+    var data = google.visualization.arrayToDataTable(array);
+    var options = {
+      vAxis: {
+        title: 'Spend (£)'
+      }
+    };
 
-function drawChart() {
+    var chart = new google.visualization.ColumnChart(
+      document.getElementById('weekday_chart'));
 
-  var data = google.visualization.arrayToDataTable([
-    ['Task', 'Hours per Day'],
-    ['Work',     11],
-    ['Eat',      2],
-    ['Commute',  2],
-    ['Watch TV', 2],
-    ['Sleep',    7]
-  ]);
+    chart.draw(data, options);
+  });
+}
 
-  var options = {
-    title: 'My Daily Activities',
-    pieHole: 0.4
-  };
+function drawReasonChart() {
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(function() {
+    var array = [
+      ['Reason','Spend', {  role: 'annotation'  }]
+    ];
+    for(var x in reasons) {
+      var r = reasons[x].reason;
+      var amount = weekreasons[r];
+      if(amount == null) {
+        amount = 0;
+      }
+      array.push([r,amount,'£'+amount.toFixed(2).toString()]);
+    }
+    var data = google.visualization.arrayToDataTable(array);
+    var options = {
+      vAxis: {
+        title: 'Spend (£)'
+      }
+    };
 
-   options.chartArea = {left:0, 'width': '80%', 'height': '80%'}
+    var chart = new google.visualization.PieChart(
+      document.getElementById('reason_chart'));
 
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-  chart.draw(data, options);
+    chart.draw(data, options);
+  });
 }
