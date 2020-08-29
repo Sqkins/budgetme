@@ -47,7 +47,9 @@ function drawReasonChart() {
     var options = {
       vAxis: {
         title: 'Spend (£)'
-      }
+      },
+      chartArea:{left: 30, right: 60,width:'100%',height:'100%'},
+      is3D: true
     };
 
     var chart = new google.visualization.PieChart(
