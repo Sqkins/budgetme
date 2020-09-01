@@ -23,7 +23,14 @@
     <a class="w3-bar-item tablink"  onclick="openPage('week-byday-content',this)" id="defaulttab">Weekdays</a>
     <a class="w3-bar-item tablink"  onclick="openPage('week-byreason-content',this)">Reasons</a>
   </nav>
-
+  <div class="w3-container">
+    <p id="week-displaying-text" style="text-align: center">Showing Week Beginning: 31/08/2020</p>
+    <div class="w3-bar-block w3-center w3-round-xlarge">
+      <button type="button" class="w3-bar-item block theme-l2" onclick="setlastweek();"id="lastweekbutton">Last Week</button>
+      <input class="w3-bar-item theme-l2" type="date" id="week-selector">
+      <button type="button" class="w3-bar-item block theme-l2" onclick="setthisweek();" id="thisweekbutton">This Week</button>
+    </div>
+  </div>
   <div class="w3-container">
     <p>Track your weekly spend, select either button above to see breakdowns by day of the week or by reason.</p>
     <h4 class="w3-center" id="week-totalspend"></h4>
@@ -129,6 +136,27 @@
   <script src="sockets.js" charset="utf-8"></script>
   <script src="spending.js" charset="utf-8"></script>
   <script type="text/javascript">
+  function setlastweek() {
+    var weekpicker = document.getElementById('week-selector');
+    weekpicker.value = moment().subtract(1, 'weeks').startOf('isoWeek').format('YYYY-MM-DD');
+    updateInfo(weekpicker.value);
+      document.getElementById('week-displaying-text').innerHTML = "Showing Last Week";
+  }
+  function setthisweek() {
+    var weekpicker = document.getElementById('week-selector');
+    weekpicker.value = moment().subtract(0, 'weeks').startOf('isoWeek').format('YYYY-MM-DD');
+    updateInfo(weekpicker.value);
+    document.getElementById('week-displaying-text').innerHTML = "Showing This Week";
+  }
+  document.getElementById("thisweekbutton").click();
+  var weekpicker = document.getElementById('week-selector');
+  weekpicker.addEventListener('change', (event) => {
+    console.log('sorting by', event.target.value);
+    var date = event.target.value;
+    event.target.value = moment(date).subtract(0, 'weeks').startOf('isoWeek').format('YYYY-MM-DD');
+    updateInfo(date);
+  });
+
   function openPage(pageName,element) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent;

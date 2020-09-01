@@ -35,6 +35,8 @@ function showTransactions() {
   var week_byreason = document.getElementById('week-byreason');
   var week_byday = document.getElementById('week-byday');
   week_totalspend.innerHTML = "Spent: £"+weektotal.toFixed(2); //set the week total spend
+  week_byreason.innerHTML = "";
+  week_byday.innerHTML = "";
   for (var reason in weekreasons) { //loop through the reasons for this week
     var amount = weekreasons[reason]; //get amount for reason
     week_byreason.innerHTML += returnHTMLReasons(amount.toFixed(2),reason,getBudget(reason)); //add html
@@ -81,14 +83,14 @@ function sortByDate() {
   datebreakdown = datesbd;
 }
 
-function thisWeekSort() {
+function sortByWeek(date) {
   var thisweek = [];
   var thisweektotal = 0;
   var thisweekreasons = [];
-  var thisweekdays = []
+  var thisweekdays = [];
   for(var x in spendinghistory) {
     var obj = spendinghistory[x];
-    if(isThisWeek(obj.date)) {
+    if(isWeek(obj.date,date)) {
       thisweek.push(obj);
       thisweektotal += obj.amount;
       if (thisweekreasons.hasOwnProperty(obj.reason)) {
@@ -118,6 +120,10 @@ function isThisWeek(d) {
   var result = moment(d).isSame(new Date(), 'week');
   return result;
 }
+function isWeek(datetocheck,weekdate) {
+  var result = moment(datetocheck).isSame(weekdate, 'week');
+  return result;
+}
 
 function getBudget(reason) {
   var budget;
@@ -127,4 +133,11 @@ function getBudget(reason) {
     }
   }
   return budget;
+}
+
+function updateInfo(weekdate) {
+  sortByWeek(weekdate);
+  document.getElementById('week-displaying-text').innerHTML = "Showing Week Beginning " + moment(weekdate).format("DD-MM-YYYY");
+  showTransactions();
+  drawCharts();
 }

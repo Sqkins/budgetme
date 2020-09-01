@@ -9,9 +9,9 @@ socket.on('spending-data',function(data) {
   spendinghistory = data;
   sortByReason();
   sortByDate();
-  thisWeekSort();
+  sortByWeek(moment().format('YYYY-MM-DD'));
 
   updateReasons();
   showTransactions();
-  drawCharts()
+  drawCharts();
 });
