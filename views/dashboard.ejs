@@ -1,0 +1,8 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.id %></p>
+<script type="text/javascript">
+  const div = document.createElement('div');
+  div.innerText = `<%= user.id %>`;
+  var id = div.innerText;
+</script>
+<a href="/users/logout" class="btn btn-secondary">Logout</a>
