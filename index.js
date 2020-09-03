@@ -5,9 +5,6 @@ var path = require('path');
 
 //Setup App
 var app = express();
-var server = app.listen(80, function() {
-  console.log('Listening on port 80');
-});
 
 // Passport Config
 require('./config/passport')(passport);
@@ -203,3 +200,10 @@ function editBudget(data) {
     }
   });
 }
+
+
+
+
+var server = app.listen(80, function() {
+  console.log('Listening on port 80');
+});
