@@ -2,7 +2,11 @@ var express = require('express');
 var socket = require('socket.io');
 var mysql = require('mysql');
 var path = require('path');
-
+const expressLayouts = require('express-ejs-layouts');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const flash = require('connect-flash');
+const session = require('express-session');
 //Setup App
 var app = express();
 
