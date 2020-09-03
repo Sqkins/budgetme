@@ -3,20 +3,35 @@
   div.innerText = `<%= user.id %>`;
   var id = div.innerText;
 </script>
-<!--
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= user.id %></p>
 
-<a href="/users/logout" class="btn btn-secondary">Logout</a> -->
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177006670-1"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'UA-177006670-1');
+  </script>
+  <script type="text/javascript">
+    var socket = io();//.connect('http://134.122.109.226');
+    console.log('connected to socket');
+
+    socket.on('reasons-data',function(data) {
+      reasons = data;
+      updateReasons();
+    });
+
+    socket.on('spending-data',function(data) {
+      spendinghistory = data;
+      sortByReason();
+      sortByDate();
+      sortByWeek(moment().format('YYYY-MM-DD'));
+
+      updateReasons();
+      showTransactions();
+      drawCharts();
+    });
   </script>
 
 
@@ -51,16 +66,6 @@
     <div class="w3-card w3-round-xlarge">
 
       <div id="week-byday"><hr>  </div>
-      <!--<div class="w3-container">
-        <div class="w3-cell-row">
-          <h3 class="w3-cell" style="width:60%;">Food Shop</h3>
-          <h4 class="text-theme w3-cell" style="text-align:right;">-£30</h4>
-        </div>
-        <div class="w3-cell-row">
-          <p class="w3-cell">50% Used | Remaining:</p>
-          <p class="w3-cell" style="text-align:right;">£30</p>
-        </div>
-      </div><hr> --> <!-- IDEA: This is the html template for the cards -->
       <div id="weekday_chart"></div> <hr>
     </div>
 
@@ -138,9 +143,6 @@
 
 </div>
 </body>
-<script src="reason.js" charset="utf-8"></script>
-<script src="sockets.js" charset="utf-8"></script>
-<script src="spending.js" charset="utf-8"></script>
 <script type="text/javascript">
 function setlastweek() {
   var weekpicker = document.getElementById('week-selector');
