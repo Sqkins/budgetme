@@ -164,7 +164,7 @@ io.on('connection', function(socket) {
 
 function getUserSpending(userid) {
   var r;
-  var sql = `SELECT * FROM transactions WHERE userid = ${userid}`;
+  var sql = `SELECT * FROM transactions WHERE userid = ${userid.toString()}`;
   con.query(sql, function(err, result) {
     if (!err) {
       r = result;
@@ -176,7 +176,7 @@ function getUserSpending(userid) {
 }
 function getUserReasons(userid) {
   var r;
-  var sql = `SELECT * FROM reasons WHERE userid = ${userid}`;
+  var sql = `SELECT * FROM reasons WHERE userid = ${userid.toString()}`;
   con.query(sql, function(err, result) {
     if (!err) {
       r = result;
