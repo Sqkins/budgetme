@@ -110,6 +110,7 @@ con.connect(function(err) {
   var sql = "SELECT * FROM reasons";
   con.query(sql, function(err, result) {
     if (!err) {
+      console.log(result);
       reasons = result;
     } else if (err) {
       console.log(err);
@@ -143,9 +144,6 @@ io.on('connection', function(socket) {
   socket.on('request-data', function(userid) {
     console.log(userid);
     var spending, reasons;
-    console.log(spendinghistory);
-    console.log(reasons);
-    console.log(reasons);console.log(spending);
     socket.emit('reasons-data', reasons);
     socket.emit('spending-data', spending);
   });
