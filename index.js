@@ -10,7 +10,7 @@ const session = require('express-session');
 //Setup App
 var app = express();
 var http = require('http').Server(app);
-var socket = require('socket.io')(http););
+var socket = require('socket.io')(http);
 // Passport Config
 require('./config/passport')(passport);
 
