@@ -144,10 +144,10 @@ io.on('connection', function(socket) {
   socket.on('request-data', function(userid) {
     console.log(userid);
     var spending, reasons;
-    var sql = "SELECT * FROM transactions WHERE userid = \"${userid}\"";
+    var sql = `SELECT * FROM transactions WHERE userid = \"${userid}\"`;
     con.query(sql, function(err, result) {
       if (!err) {
-        console.log("Result: ${result}");
+        console.log(`Result: ${result}`);
         spending = result;
       } else if (err) {
         console.log(err);
