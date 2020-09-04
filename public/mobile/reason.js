@@ -17,6 +17,7 @@ function updateReasons(){
   var sel = document.getElementById('options');
   sel.innerHTML = "<option value=\"\" disabled selected>Choose your option</option>";
   var editbudgetpanel = document.getElementById('budget-panel');
+  editbudgetpanel.innerHTML = '';
   for(var option in reasons) {
     var  reason = reasons[option];
     var opt = document.createElement('option');
@@ -26,7 +27,7 @@ function updateReasons(){
 
 
     var text = returnHTMLBudget(reason.id,reason.reason,reason.budget);
-    editbudgetpanel.innerHTML = '';
+
     editbudgetpanel.innerHTML+= text;
   }
 }
