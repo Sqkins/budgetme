@@ -1,5 +1,5 @@
 var express = require('express');
-
+var socket = require('socket.io');
 var mysql = require('mysql');
 var path = require('path');
 const expressLayouts = require('express-ejs-layouts');
@@ -9,8 +9,11 @@ const flash = require('connect-flash');
 const session = require('express-session');
 //Setup App
 var app = express();
-var http = require('http').Server(app);
-var socket = require('socket.io')(http);
+var server = app.listen(80, function() {
+  console.log('Listening on port 80');
+});
+
+
 // Passport Config
 require('./config/passport')(passport);
 
@@ -128,7 +131,7 @@ var spendinghistory = [];
 //sending clients spendinghistory ~ spending-data (data = 'reason','amount','date')
 //sending a new transaction ~ new-transaction (data = 'reason','amount','date')
 //updating a reasons budget per week ~ edit-budget (data = 'reason','budget')
-var io = socket.listen(server);
+var io = socket(server);
 io.on('connection', function(socket) {
   console.log('Made socket connection.');
   console.log(socket.id);
@@ -205,10 +208,3 @@ function editBudget(data) {
     }
   });
 }
-
-
-
-
-var server = app.listen(80, function() {
-  console.log('Listening on port 80');
-});
