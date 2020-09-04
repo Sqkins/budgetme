@@ -116,7 +116,7 @@ con.connect(function(err) {
       console.log(err);
     }
   });
-  var sql = "SELECT * FROM transactions";
+  var sql = "SELECT * FROM transactions WHERE userid = \"5f515dbcbc821d8aa6ccd7fb\"";
   con.query(sql, function(err, result) {
     if (!err) {
       spendinghistory = result;
