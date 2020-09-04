@@ -1,5 +1,5 @@
 var express = require('express');
-var socket = require('socket.io');
+var socket = require('socket.io')(express);
 var mysql = require('mysql');
 var path = require('path');
 const expressLayouts = require('express-ejs-layouts');
