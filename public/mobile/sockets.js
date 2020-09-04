@@ -1,19 +1,1 @@
-var socket = io();//.connect('http://134.122.109.226');
-console.log('connected to socket');
 
-
-socket.on('reasons-data',function(data) {
-  reasons = data;
-  updateReasons();
-});
-
-socket.on('spending-data',function(data) {
-  spendinghistory = data;
-  sortByReason();
-  sortByDate();
-  sortByWeek(moment().format('YYYY-MM-DD'));
-
-  updateReasons();
-  showTransactions();
-  drawCharts();
-});
