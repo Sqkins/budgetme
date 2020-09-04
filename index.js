@@ -9,7 +9,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 //Setup App
 var app = express();
-var socket = require('socket.io')(server);
+var http = require('http').Server(app);
+var socket = require('socket.io')(http););
 // Passport Config
 require('./config/passport')(passport);
 
