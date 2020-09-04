@@ -143,8 +143,11 @@ io.on('connection', function(socket) {
   console.log(socket.id);
   socket.on('request-data', function(userid) {
     console.log(userid);
-    socket.emit('reasons-data', getUserReasons(userid));
-    socket.emit('spending-data', getUserSpending(userid));
+    console.log(getUserReasons(userid));
+    var userreasons = getUserReasons(userid);
+    var userspending = getUserSpending(userid);
+    socket.emit('reasons-data',userreasons);
+    socket.emit('spending-data', userspending);
   });
 
 
@@ -162,10 +165,8 @@ io.on('connection', function(socket) {
 function getUserSpending(userid) {
   var r;
   var sql = `SELECT * FROM transactions WHERE userid = \"${userid}\"`;
-  console.log(sql);
   con.query(sql, function(err, result) {
     if (!err) {
-      console.log(`Result: ${result}`);
       r = result;
     } else if (err) {
       console.log(err);
@@ -176,10 +177,8 @@ function getUserSpending(userid) {
 function getUserReasons(userid) {
   var r;
   var sql = `SELECT * FROM reasons WHERE userid = \"${userid}\"`;
-  console.log(sql);
   con.query(sql, function(err, result) {
     if (!err) {
-      console.log(`Result: ${result}`);
       r = result;
     } else if (err) {
       console.log(err);
