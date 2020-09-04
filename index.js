@@ -1,5 +1,5 @@
 var express = require('express');
-var socket = require('socket.io')(express);
+
 var mysql = require('mysql');
 var path = require('path');
 const expressLayouts = require('express-ejs-layouts');
@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 //Setup App
 var app = express();
-
+var socket = require('socket.io')(app);
 // Passport Config
 require('./config/passport')(passport);
 
