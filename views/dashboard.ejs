@@ -2,6 +2,7 @@
   const div = document.createElement('div');
   div.innerText = `<%= user.id %>`;
   var userid = div.innerText;
+  socket.emit('request-data',userid);
 </script>
 <header class="w3-top w3-bar theme">
   <h1 class="w3-bar-item">Budgetme</h1>
