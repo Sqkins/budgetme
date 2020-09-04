@@ -172,7 +172,7 @@ function getUserSpending(userid) {
   return r;
 }
 function getUserReasons(userid) {
-  var r;
+  var r = [];
   reasons.forEach(element => {
     if(element.userid === userid) {
       r.push(element);
