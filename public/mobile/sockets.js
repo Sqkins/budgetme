@@ -2,7 +2,7 @@ var socket = io();//.connect('http://134.122.109.226');
 console.log('connected to socket');
 var b = false;
 while (!b) {
-  if(!(typeof userid === 'undefined') {
+  if(!(typeof userid === 'undefined')) {
     console.log(userid);
     socket.emit('request-data',userid);
     b = true;
