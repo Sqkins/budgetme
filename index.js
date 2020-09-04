@@ -143,7 +143,7 @@ io.on('connection', function(socket) {
   socket.on('request-data', function(userid) {
     console.log(userid);
     var spending, reasons;
-    var sql = "SELECT * FROM transactions WHERE userid = \"" + userid + "\"";
+    var sql = "SELECT * FROM transactions WHERE userid = \"" + userid + "\";";
     con.query(sql, function(err, result) {
       if (!err) {
         spending = result;
@@ -151,7 +151,7 @@ io.on('connection', function(socket) {
         console.log(err);
       }
     });
-    var sql = "SELECT * FROM reasons WHERE userid = \"" + userid + "\"";
+    var sql = "SELECT * FROM reasons WHERE userid = \"" + userid + "\";";
     con.query(sql, function(err, result) {
       if (!err) {
         spending = result;
