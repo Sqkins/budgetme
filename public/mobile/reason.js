@@ -15,6 +15,7 @@ function returnHTMLBudget(id,mastertext,budget) {
 function updateReasons(){
     // get reference to select element
   var sel = document.getElementById('options');
+  sel.innerHTML = "<option value=\"\" disabled selected>Choose your option</option>";
   var editbudgetpanel = document.getElementById('budget-panel');
   for(var option in reasons) {
     var  reason = reasons[option];
