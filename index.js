@@ -127,7 +127,7 @@ var spendinghistory = [];
 //sending clients spendinghistory ~ spending-data (data = 'reason','amount','date')
 //sending a new transaction ~ new-transaction (data = 'reason','amount','date')
 //updating a reasons budget per week ~ edit-budget (data = 'reason','budget')
-var io = socket(server);
+var io = socket;
 io.on('connection', function(socket) {
   console.log('Made socket connection.');
   console.log(socket.id);
