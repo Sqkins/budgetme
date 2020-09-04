@@ -26,6 +26,7 @@ function updateReasons(){
 
 
     var text = returnHTMLBudget(reason.id,reason.reason,reason.budget);
+    editbudgetpanel.innerHTML = '';
     editbudgetpanel.innerHTML+= text;
   }
 }
