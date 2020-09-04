@@ -106,7 +106,7 @@ con.connect(function(err) {
     console.log("Connected to MySQL");
   } else if (err) {
     console.log(err);
-  }
+  }/*
   var sql = "SELECT * FROM reasons";
   con.query(sql, function(err, result) {
     if (!err) {
@@ -123,7 +123,7 @@ con.connect(function(err) {
     } else if (err) {
       console.log(err);
     }
-  });
+  });*/
 });
 
 //variables
@@ -164,7 +164,7 @@ io.on('connection', function(socket) {
 
 function getUserSpending(userid) {
   var r;
-  var sql = `USE budgetme;SELECT * FROM transactions WHERE userid = \"${userid}\"`;
+  var sql = `SELECT * FROM transactions WHERE userid = \"${userid}\"`;
   con.query(sql, function(err, result) {
     if (!err) {
       r = result;
@@ -176,7 +176,7 @@ function getUserSpending(userid) {
 }
 function getUserReasons(userid) {
   var r;
-  var sql = `USE budgetme;SELECT * FROM reasons WHERE userid = \"${userid}\"`;
+  var sql = `SELECT * FROM reasons WHERE userid = \"${userid}\"`;
   con.query(sql, function(err, result) {
     if (!err) {
       r = result;
