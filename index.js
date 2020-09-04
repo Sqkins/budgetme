@@ -143,19 +143,8 @@ io.on('connection', function(socket) {
   console.log(socket.id);
   socket.on('request-data', function(userid) {
     console.log(userid);
-    var spending, reasons;
-    var sql = `SELECT * FROM transactions WHERE userid = \"${userid}\"`;
-    console.log(sql);
-    con.query(sql, function(err, result) {
-      if (!err) {
-        console.log(`Result: ${result}`);
-        spending = result;
-      } else if (err) {
-        console.log(err);
-      }
-    });
-    socket.emit('reasons-data', reasons);
-    socket.emit('spending-data', spending);
+    socket.emit('reasons-data', getUserReasons(userid));
+    socket.emit('spending-data', getUserSpending(userid));
   });
 
 
@@ -169,6 +158,35 @@ io.on('connection', function(socket) {
     editBudget(data);
   });
 });
+
+function getUserSpending(userid) {
+  var r;
+  var sql = `SELECT * FROM transactions WHERE userid = \"${userid}\"`;
+  console.log(sql);
+  con.query(sql, function(err, result) {
+    if (!err) {
+      console.log(`Result: ${result}`);
+      r = result;
+    } else if (err) {
+      console.log(err);
+    }
+  });
+  return r;
+}
+function getUserReasons(userid) {
+  var r;
+  var sql = `SELECT * FROM reasons WHERE userid = \"${userid}\"`;
+  console.log(sql);
+  con.query(sql, function(err, result) {
+    if (!err) {
+      console.log(`Result: ${result}`);
+      r = result;
+    } else if (err) {
+      console.log(err);
+    }
+  });
+  return r;
+}
 
 function addTransaction(data) {
   var sql = "INSERT INTO transactions (reason,date,amount,userid) VALUES (\"" + data.reason + "\",\"" + data.date + "\",\"" + data.amount + "\",\"" + data.userid + "\")";
