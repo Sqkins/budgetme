@@ -106,7 +106,7 @@ con.connect(function(err) {
     console.log("Connected to MySQL");
   } else if (err) {
     console.log(err);
-  }/*
+  }
   var sql = "SELECT * FROM reasons";
   con.query(sql, function(err, result) {
     if (!err) {
@@ -116,14 +116,14 @@ con.connect(function(err) {
       console.log(err);
     }
   });
-  var sql = "SELECT * FROM transactions WHERE userid = \"5f515dbcbc821d8aa6ccd7fb\"";
+  var sql = "SELECT * FROM transactions";
   con.query(sql, function(err, result) {
     if (!err) {
       spendinghistory = result;
     } else if (err) {
       console.log(err);
     }
-  });*/
+  });
 });
 
 //variables
@@ -163,25 +163,19 @@ io.on('connection', function(socket) {
 });
 
 function getUserSpending(userid) {
-  var r;
-  var sql = `SELECT * FROM transactions WHERE userid = ${userid.toString()}`;
-  con.query(sql, function(err, result) {
-    if (!err) {
-      r = result;
-    } else if (err) {
-      console.log(err);
+  var r = [];
+  spendinghistory.forEach(element => {
+    if(element.userid === userid) {
+      r.push(element);
     }
   });
   return r;
 }
 function getUserReasons(userid) {
   var r;
-  var sql = `SELECT * FROM reasons WHERE userid = ${userid.toString()}`;
-  con.query(sql, function(err, result) {
-    if (!err) {
-      r = result;
-    } else if (err) {
-      console.log(err);
+  reasons.forEach(element => {
+    if(element.userid === userid) {
+      r.push(element);
     }
   });
   return r;
