@@ -145,6 +145,7 @@ io.on('connection', function(socket) {
     console.log(userid);
     var spending, reasons;
     var sql = `SELECT * FROM transactions WHERE userid = \"${userid}\"`;
+    console.log(sql);
     con.query(sql, function(err, result) {
       if (!err) {
         console.log(`Result: ${result}`);
