@@ -35,6 +35,7 @@ app.set('view engine', 'ejs');
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public/mobile'));
 
 // Express session
 app.use(
