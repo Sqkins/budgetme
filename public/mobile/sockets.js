@@ -1,5 +1,6 @@
 var socket = io();//.connect('http://134.122.109.226');
 console.log('connected to socket');
+socket.emit('request-data',userid);
 
 socket.on('reasons-data',function(data) {
   reasons = data;

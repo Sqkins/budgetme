@@ -4,7 +4,7 @@ var reasons = [];
 function addReason() {
   var input = document.getElementById('new-reason').value;
   var budget = document.getElementById('new-reason-budget').value;
-  socket.emit('add-reason',{input,budget});
+  socket.emit('add-reason',{input,budget,userid});
   updateReasons();
 }
 
@@ -38,5 +38,5 @@ function editBudget(idstring) {
       reason = reasons[i].reason;
     }
   }
-  socket.emit('edit-budget',{reason,budget});
+  socket.emit('edit-budget',{reason,budget,userid});
 }
