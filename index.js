@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 //Setup App
 var app = express();
-var server = app.listen(80, function() {
+var server = app.listen(80, function () {
   console.log('Listening on port 80');
 });
 
@@ -58,7 +58,7 @@ app.use(passport.session());
 app.use(flash());
 
 // Global variables
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
@@ -74,7 +74,7 @@ app.use(express.static('public'));
 app.use(express.static('public/main'));
 app.use(express.static('public/mobile'));
 app.use(express.static('icon'));
-app.get('/legacy', function(req, res) {
+/*app.get('/legacy', function(req, res) {
   var ua = req.header('user-agent');
   // Check the user-agent string to identyfy the device.
   if (/mobile|iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile|ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(ua)) {
@@ -86,8 +86,8 @@ app.get('/legacy', function(req, res) {
 });
 app.get('/mobile', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/mobile/mobile.html'));
-});
-app.get('/colors', function(req, res) {
+}); */
+app.get('/colors', function (req, res) {
   res.sendFile(path.join(__dirname + '/public/colors.css'));
 });
 
@@ -101,14 +101,14 @@ var con = mysql.createConnection({
   insecureAuth: true
 });
 
-con.connect(function(err) {
+con.connect(function (err) {
   if (!err) {
     console.log("Connected to MySQL");
   } else if (err) {
     console.log(err);
   }
   var sql = "SELECT * FROM reasons";
-  con.query(sql, function(err, result) {
+  con.query(sql, function (err, result) {
     if (!err) {
       reasons = result;
       console.log(reasons);
@@ -117,7 +117,7 @@ con.connect(function(err) {
     }
   });
   var sql = "SELECT * FROM transactions";
-  con.query(sql, function(err, result) {
+  con.query(sql, function (err, result) {
     if (!err) {
       spendinghistory = result;
     } else if (err) {
@@ -138,26 +138,26 @@ var spendinghistory = [];
 //sending a new transaction ~ new-transaction (data = 'userid','reason','amount','date')
 //updating a reasons budget per week ~ edit-budget (data = 'userid','reason','budget')
 var io = socket(server);
-io.on('connection', function(socket) {
+io.on('connection', function (socket) {
   console.log('Made socket connection.');
   console.log(socket.id);
-  socket.on('request-data', function(userid) {
+  socket.on('request-data', function (userid) {
     console.log(userid);
     console.log(getUserReasons(userid));
     var userreasons = getUserReasons(userid);
     var userspending = getUserSpending(userid);
-    socket.emit('reasons-data',userreasons);
+    socket.emit('reasons-data', userreasons);
     socket.emit('spending-data', userspending);
   });
 
 
-  socket.on('add-reason', function(data) {
+  socket.on('add-reason', function (data) {
     newReason(data);
   });
-  socket.on('new-transaction', function(data) {
+  socket.on('new-transaction', function (data) {
     addTransaction(data);
   });
-  socket.on('edit-budget', function(data) {
+  socket.on('edit-budget', function (data) {
     editBudget(data);
   });
 });
@@ -165,16 +165,17 @@ io.on('connection', function(socket) {
 function getUserSpending(userid) {
   var r = [];
   spendinghistory.forEach(element => {
-    if(element.userid === userid) {
+    if (element.userid === userid) {
       r.push(element);
     }
   });
   return r;
 }
+
 function getUserReasons(userid) {
   var r = [];
   reasons.forEach(element => {
-    if(element.userid === userid) {
+    if (element.userid === userid) {
       r.push(element);
     }
   });
@@ -183,10 +184,10 @@ function getUserReasons(userid) {
 
 function addTransaction(data) {
   var sql = "INSERT INTO transactions (reason,date,amount,userid) VALUES (\"" + data.reason + "\",\"" + data.date + "\",\"" + data.amount + "\",\"" + data.userid + "\")";
-  con.query(sql, function(err, result) {
+  con.query(sql, function (err, result) {
     if (!err) {
       var sql = "SELECT * FROM transactions";
-      con.query(sql, function(err, result) {
+      con.query(sql, function (err, result) {
         if (!err) {
           spendinghistory = result;
         } else if (err) {
@@ -204,11 +205,11 @@ function addTransaction(data) {
 function newReason(data) {
   console.log(data);
   var sql = "INSERT INTO reasons (reason,budget,userid) VALUES (\"" + data.input + "\"," + data.budget + ",\"" + data.userid + "\")";
-  con.query(sql, function(err, result) {
+  con.query(sql, function (err, result) {
     if (!err) {
       console.log(data.reason + 'with budget £' + data.budget + ' has been added as a new reason!');
       var sql = "SELECT * FROM reasons";
-      con.query(sql, function(err, result) {
+      con.query(sql, function (err, result) {
         if (!err) {
           reasons = result;
         } else if (err) {
@@ -224,11 +225,11 @@ function newReason(data) {
 
 function editBudget(data) {
   var sql = "UPDATE reasons SET budget = " + data.budget + " WHERE reason = \"" + data.reason + "\" AND userid = \"" + data.userid + "\"";
-  con.query(sql, function(err, result) {
+  con.query(sql, function (err, result) {
     if (!err) {
       console.log(data.reason + 'with budget £' + data.budget + ' has been updated!');
       var sql = "SELECT * FROM reasons";
-      con.query(sql, function(err, result) {
+      con.query(sql, function (err, result) {
         if (!err) {
           reasons = result;
         } else if (err) {
