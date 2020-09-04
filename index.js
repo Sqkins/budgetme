@@ -159,6 +159,7 @@ io.on('connection', function(socket) {
         console.log(err);
       }
     });
+    console.log(reasons);console.log(spending);
     socket.emit('reasons-data', reasons);
     socket.emit('spending-data', spending);
   });
