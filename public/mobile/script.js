@@ -81,7 +81,6 @@ function createBudgetElement(currentBudget, reason, id, parentelement) {
 
     row1.appendChild(h3); //append children to row class
     row1.appendChild(p);
-    console.log(row1);
 
     var row2 = document.createElement("div");
     row2.classList.add("w3-cell-row");
@@ -100,7 +99,6 @@ function createBudgetElement(currentBudget, reason, id, parentelement) {
 
     row2.appendChild(input); //append children to row class
     row2.appendChild(button);
-    console.log(row2);
 
     divwrapper.appendChild(row1);
     divwrapper.appendChild(row2);
@@ -124,6 +122,51 @@ function createWeekdayElement(spend, day, parentelement) {
 
     divwrapper.appendChild(h1);
     divwrapper.appendChild(h3);
+
+    parentelement.appendChild(divwrapper);
+    var hr = document.createElement("hr");
+    parentelement.appendChild(hr);
+}
+
+function createReasonElement(spend, reason,budget, parentelement) {
+    var percentused = ((spend/budget)*100).toFixed(1);
+    var leftover = (budget-spend).toFixed(2);
+
+    var divwrapper = document.createElement("div");
+    divwrapper.classList.add("container");
+
+    var row1 = document.createElement("div");
+    row1.classList.add("w3-cell-row");
+
+    var h1 = document.createElement("h1");
+    addClasses(h1, ["w3-cell", "text-theme"]);
+    h1.setAttribute("style", "width: 60%;")
+    h1.innerHTML = reason;
+
+    var h3 = document.createElement("h3");
+    addClasses(h3, ["w3-cell"]);
+    h3.innerHTML = `-£${spend}`;
+    h3.setAttribute("style", "text-align: right;")
+
+    row1.appendChild(h1); //append children to row class
+    row1.appendChild(h3);
+
+    var row2 = document.createElement("div");
+    row2.classList.add("w3-cell-row");
+
+    var p1 = document.createElement("p");
+    addClasses(p1,["w3-cell"]);
+    p1.innerHTML = `${percentused}% Used | Remaining:`;
+
+    var p2 = document.createElement("p");
+    addClasses(p2,["w3-cell"]);
+    p2.innerHTML = `£${leftover}`;
+
+    row2.appendChild(p1); //append children to row class
+    row2.appendChild(p2);
+
+    divwrapper.appendChild(row1);
+    divwrapper.appendChild(row2);
 
     parentelement.appendChild(divwrapper);
     var hr = document.createElement("hr");

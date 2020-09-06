@@ -13,11 +13,6 @@ var weekreasons = [];
 var weekdays = []
 
 var cardhtml = "";
-function returnHTMLReasons(amount,mastertext,budget) {
-  var percentused = ((amount/budget)*100).toFixed(1);
-  var leftover = (budget-amount).toFixed(2);
-  return "<div class=\"w3-container\"><div class=\"w3-cell-row\"><h3 class=\"w3-cell\" style=\"width:60%;\">"+mastertext+"</h3><h4 class=\"text-theme w3-cell\" style=\"text-align:right;\">-£"+amount+"</h4></div><div class=\"w3-cell-row\"><p class=\"w3-cell\">"+percentused+"% Used | Remaining:</p><p class=\"w3-cell\" style=\"text-align:right;\">£"+leftover+"</p></div></div><hr>";
-}
 
 function addTransaction() {
   var reason = document.getElementById('options').value;
@@ -36,7 +31,7 @@ function showTransactions() {
   week_byday.innerHTML = "";
   for (var reason in weekreasons) { //loop through the reasons for this week
     var amount = weekreasons[reason]; //get amount for reason
-    week_byreason.innerHTML += returnHTMLReasons(amount.toFixed(2),reason,getBudget(reason)); //add html
+    createReasonElement(amount.toFixed(2),reason,getBudget(reason),document.getElementById("week-byreason"))
   }
   for (var x in weekdaylist) { //loop through days in a week
     var amount = 0; //default amount
@@ -44,7 +39,7 @@ function showTransactions() {
     if(weekdays.hasOwnProperty(day)) { //if money spent on 'day' set amount to the spend
       amount = weekdays[day];
     }
-    createWeekdayElement(amount.toFixed(2),day,document.getElementById("week-byreason"));
+    createWeekdayElement(amount.toFixed(2),day,document.getElementById("week-byday"));
   }
 }
 
