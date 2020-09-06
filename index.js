@@ -90,6 +90,9 @@ app.get('/mobile', function(req, res) {
 app.get('/colors', function (req, res) {
   res.sendFile(path.join(__dirname + '/public/colors.css'));
 });
+app.get('/style', function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/style.css'));
+});
 
 
 var con = mysql.createConnection({
