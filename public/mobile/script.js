@@ -114,7 +114,7 @@ function createWeekdayElement(spend, day, parentelement) {
     var divwrapper = document.createElement("div");
     divwrapper.classList.add("container");
 
-    var h1 = docment.createElement("h1");
+    var h1 = document.createElement("h1");
     addClasses(h1, ["inline", "text-theme"]);
     h1.innerHTML = day;
 
