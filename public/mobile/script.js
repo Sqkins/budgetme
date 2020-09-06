@@ -59,6 +59,10 @@ for (i = 0; i < acc.length; i++) {
         }
     });
 }
+
+createBudgetElement(50, "Food Shop", 1, document.getElementById('budgetcontainer'));
+
+
 function createBudgetElement(currentBudget, reason, id, parentelement) {
     var divwrapper = document.createElement("div");
     divwrapper.classList.add("container");
@@ -102,9 +106,29 @@ function createBudgetElement(currentBudget, reason, id, parentelement) {
     divwrapper.appendChild(row2);
 
     parentelement.appendChild(divwrapper);
+    var hr = document.createElement("hr");
+    parentelement.appendChild(hr);
 }
 
+function createWeekdayElement(spend, day, parentelement) {
+    var divwrapper = document.createElement("div");
+    divwrapper.classList.add("container");
 
+    var h1 = docment.createElement("h1");
+    addClasses(h1, ["inline", "text-theme"]);
+    h1.innerHTML = day;
+
+    var h3 = document.createElement("h3");
+    addClasses(h3, ["inline", "center-v", "right"]);
+    h3.innerHTML = `£${spend}`;
+
+    divwrapper.appendChild(h1);
+    divwrapper.appendChild(h3);
+
+    parentelement.appendChild(divwrapper);
+    var hr = document.createElement("hr");
+    parentelement.appendChild(hr);
+}
 
 function addClasses(element, classes) {
     classes.forEach(function (c) {
