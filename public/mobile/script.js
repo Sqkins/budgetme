@@ -60,7 +60,7 @@ for (i = 0; i < acc.length; i++) {
     });
 }
 
-createBudgetElement(50, "Food Shop", 1, document.getElementById('budgetcontainer'));
+
 
 
 function createBudgetElement(currentBudget, reason, id, parentelement) {
@@ -107,6 +107,8 @@ function createBudgetElement(currentBudget, reason, id, parentelement) {
 
     parentelement.appendChild(divwrapper);
 }
+
+
 
 function addClasses(element, classes) {
     classes.forEach(function (c) {
