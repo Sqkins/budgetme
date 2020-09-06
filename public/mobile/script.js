@@ -59,10 +59,6 @@ for (i = 0; i < acc.length; i++) {
         }
     });
 }
-
-
-
-
 function createBudgetElement(currentBudget, reason, id, parentelement) {
     var divwrapper = document.createElement("div");
     divwrapper.classList.add("container");
