@@ -18,9 +18,6 @@ function returnHTMLReasons(amount,mastertext,budget) {
   var leftover = (budget-amount).toFixed(2);
   return "<div class=\"w3-container\"><div class=\"w3-cell-row\"><h3 class=\"w3-cell\" style=\"width:60%;\">"+mastertext+"</h3><h4 class=\"text-theme w3-cell\" style=\"text-align:right;\">-£"+amount+"</h4></div><div class=\"w3-cell-row\"><p class=\"w3-cell\">"+percentused+"% Used | Remaining:</p><p class=\"w3-cell\" style=\"text-align:right;\">£"+leftover+"</p></div></div><hr>";
 }
-function returnHTMLWeekdays(amount,mastertext) {
-  return "<div class=\"w3-container\">  <div class=\"w3-cell-row\"><h3 class=\"w3-cell\" style=\"width:60%;\">"+mastertext+"</h3><h4 class=\"text-theme w3-cell\" style=\"text-align:right;\">-£"+amount+"</h4>  </div></div><hr>";
-}
 
 function addTransaction() {
   var reason = document.getElementById('options').value;
@@ -47,7 +44,7 @@ function showTransactions() {
     if(weekdays.hasOwnProperty(day)) { //if money spent on 'day' set amount to the spend
       amount = weekdays[day];
     }
-    week_byday.innerHTML += returnHTMLWeekdays(amount.toFixed(2),day); //add html
+    createWeekdayElement(amount.toFixed(2),day,document.getElementById("week-byreason"));
   }
 }
 
