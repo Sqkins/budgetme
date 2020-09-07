@@ -65,8 +65,4 @@ hr {
   .right-responsive {
       float: none;
   }
-  .container {
-    margin-right: 2%;
-    margin-left: 2%;
-  }
 }
