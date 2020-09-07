@@ -187,7 +187,7 @@ if (reasons === undefined || reasons.length == 0) {
     createNoReasonsHTML();
 }
 
-function createNoReasonsHTML {
+function createNoReasonsHTML() {
     var holder = document.getElementById("noreasonstab");
     var br = document.createElement("br");
     holder.appendChild(br);
