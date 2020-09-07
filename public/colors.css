@@ -15,7 +15,7 @@
 
 .theme {color:#fff !important; background-color:#0d69f2 !important}
 .text-theme {color:#0d69f2 !important}
-.border-theme {border-color:#0d69f2 !important}
+.border-theme {border:3px solid #0d69f2 !important}
 
 .hover-theme:hover {color:#fff !important; background-color:#0d69f2 !important}
 .hover-text-theme:hover {color:#0d69f2 !important}
