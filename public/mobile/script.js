@@ -206,9 +206,8 @@ function addDefaultReasons() {
         "Clothing": 10
     }
 ];
-    for (const [key, value] of Object.entries(defaultreasons)) {
+    for (const [reason, budget] of Object.entries(defaultreasons)) {
         console.log(`adding ${key} ${value}`)
-        var budget = defaultreasons[key]; var reason = defaultreasons.keys[key];
         console.log({reason,budget,userid});
         socket.emit('add-reason', {
             reason,
