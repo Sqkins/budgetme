@@ -16,13 +16,14 @@ function updateReasons(){
     // get reference to select element
   var sel = document.getElementById('options');
   sel.innerHTML = "<option value=\"\" disabled selected>Choose your option</option>";
+  document.getElementById('budgetcontainer').innerHTML = "";
   for(var option in reasons) {
     var  reason = reasons[option];
     var opt = document.createElement('option');
     opt.appendChild( document.createTextNode(reason.reason) );
     opt.value = reason.reason;
     sel.appendChild(opt);
-    document.getElementById('budgetcontainer').innerHTML = "";
+    
     createBudgetElement(reason.budget,reason.reason, reason.id, document.getElementById('budgetcontainer'));
   }
 }
