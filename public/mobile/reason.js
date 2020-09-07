@@ -38,4 +38,5 @@ function editBudget(idstring) {
     }
   }
   socket.emit('edit-budget',{reason,budget,userid});
+  location.reload();
 }

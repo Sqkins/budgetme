@@ -95,6 +95,7 @@ function createBudgetElement(currentBudget, reason, id, parentelement) {
     var button = document.createElement("button");
     button.innerHTML = "Go"
     button.setAttribute("style", "width:20%;");
+    button.setAttribute("onclick", `editBudget('budget${id}')`)
     addClasses(button, ["w3-cell", "theme", "w3-button"]);
 
     row2.appendChild(input); //append children to row class
@@ -177,4 +178,39 @@ function addClasses(element, classes) {
     classes.forEach(function (c) {
         element.classList.add(c);
     });
+}
+
+//check if user has any reasons defined
+if (reasons === undefined || reasons.length == 0) {
+    // the user has no defined reasons
+    //give them the option to add default ones
+    createNoReasonsHTML();
+}
+
+function createNoReasonsHTML {
+    var holder = document.getElementById("noreasonstab");
+    var br = document.createElement("br");
+    holder.appendChild(br);
+
+    var wrapper = document.createElement("div");
+    addClasses(wrapper, ["w3-alert", "border-theme", "w3-round-xlarge", "w3-container"]);
+
+    var span = document.createElement("span");
+    addClasses(span, ["w3-button", "theme", "w3-right"]);
+    span.setAttribute("onclick", "this.parentElement.style.display='none'");
+    span.setAttribute("style", "border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;");
+    span.innerHTML = "&times;";
+
+    var h5 = document.createElement("h5");
+    h5.innerHTML = "You don't have any reasons yet... get started with some generic ones.";
+    var p = document.createElement("p");
+    p.innerHTML = "You can always edit or remove them later.";
+
+    var button = document.createElement("button");
+    addClasses(button,["theme","w3-button"]);
+    button.setAttribute("style","border-top-left-radius: 10px;border-top-right-radius: 10px;");
+    button.innerHTML = "Let's Go"
+
+    wrapper.appendChild(span); wrapper.appendChild(h5); wrapper.appendChild(p); wrapper.appendChild(button);
+    holder.appendChild(wrapper);
 }
