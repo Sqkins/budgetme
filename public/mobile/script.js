@@ -185,30 +185,42 @@ function addClasses(element, classes) {
 
 function addDefaultReasons() {
     var defaultreasons = [{
-        "Food Shop": 30
-    },
-    {
-        "Gifts": 5
-    },
-    {
-        "Eating Out": 15
-    },
-    {
-        "Fast Food": 30
-    },
-    {
-        "Leisure": 10
-    },
-    {
-        "Repairs": 30
-    },
-    {
-        "Clothing": 10
-    }
-];
-    for (const [reason, budget] of Object.entries(defaultreasons)) {
-        console.log(`adding ${reason} ${budget}`)
-        console.log({reason,budget,userid});
+            reason: "Food Shop",
+            budget: 30
+        },
+        {
+            reason: "Gifts",
+            budget: 5
+        },
+        {
+            reason: "Eating Out",
+            budget: 15
+        },
+        {
+            reason: "Fast Food",
+            budget: 30
+        },
+        {
+            reason: "Leisure",
+            budget: 10
+        },
+        {
+            reason: "Repairs",
+            budget: 30
+        },
+        {
+            reason: "Clothing",
+            budget: 10
+        }
+    ];
+    for (var x in defaultreasons) {
+        var reason = defaultreasons[x].reason;
+        var budget = defaultreasons[x].budget;
+        console.log({
+            reason,
+            budget,
+            userid
+        });
         socket.emit('add-reason', {
             reason,
             budget,
