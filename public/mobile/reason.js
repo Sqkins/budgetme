@@ -22,7 +22,7 @@ function updateReasons(){
     opt.appendChild( document.createTextNode(reason.reason) );
     opt.value = reason.reason;
     sel.appendChild(opt);
-
+    document.getElementById('budgetcontainer').innerHTML = "";
     createBudgetElement(reason.budget,reason.reason, reason.id, document.getElementById('budgetcontainer'));
   }
 }

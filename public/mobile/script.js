@@ -128,9 +128,9 @@ function createWeekdayElement(spend, day, parentelement) {
     parentelement.appendChild(hr);
 }
 
-function createReasonElement(spend, reason,budget, parentelement) {
-    var percentused = ((spend/budget)*100).toFixed(1);
-    var leftover = (budget-spend).toFixed(2);
+function createReasonElement(spend, reason, budget, parentelement) {
+    var percentused = ((spend / budget) * 100).toFixed(1);
+    var leftover = (budget - spend).toFixed(2);
 
     var divwrapper = document.createElement("div");
     divwrapper.classList.add("container");
@@ -155,11 +155,11 @@ function createReasonElement(spend, reason,budget, parentelement) {
     row2.classList.add("w3-cell-row");
 
     var p1 = document.createElement("p");
-    addClasses(p1,["w3-cell"]);
+    addClasses(p1, ["w3-cell"]);
     p1.innerHTML = `${percentused}% Used | Remaining:`;
 
     var p2 = document.createElement("p");
-    addClasses(p2,["w3-cell"]);
+    addClasses(p2, ["w3-cell"]);
     p2.innerHTML = `£${leftover}`;
 
     row2.appendChild(p1); //append children to row class
