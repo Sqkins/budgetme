@@ -181,10 +181,43 @@ function addClasses(element, classes) {
 }
 
 //check if user has any reasons defined
-if (reasons === undefined || reasons.length == 0) {
+if (reasons.length == 0) {
     // the user has no defined reasons
     //give them the option to add default ones
     createNoReasonsHTML();
+}
+var defaultreasons = [{
+        "Food Shop": 30
+    },
+    {
+        "Gifts": 5
+    },
+    {
+        "Eating Out": 15
+    },
+    {
+        "Fast Food": 30
+    },
+    {
+        "Leisure": 10
+    },
+    {
+        "Repairs": 30
+    },
+    {
+        "Clothing": 10
+    }
+];
+
+function addDefaultReasons() {
+    for (const [key, value] of Object.entries(defaultreasons)) {
+        socket.emit('add-reason', {
+            key,
+            value,
+            userid
+        });
+    }
+    updateReasons();
 }
 
 function createNoReasonsHTML() {
@@ -207,10 +240,14 @@ function createNoReasonsHTML() {
     p.innerHTML = "You can always edit or remove them later.";
 
     var button = document.createElement("button");
-    addClasses(button,["theme","w3-button"]);
-    button.setAttribute("style","border-top-left-radius: 10px;border-top-right-radius: 10px;");
+    addClasses(button, ["theme", "w3-button"]);
+    button.setAttribute("style", "border-top-left-radius: 10px;border-top-right-radius: 10px;");
+    button.setAttribute("onclick", "addDefaultReasons();");
     button.innerHTML = "Let's Go"
 
-    wrapper.appendChild(span); wrapper.appendChild(h5); wrapper.appendChild(p); wrapper.appendChild(button);
+    wrapper.appendChild(span);
+    wrapper.appendChild(h5);
+    wrapper.appendChild(p);
+    wrapper.appendChild(button);
     holder.appendChild(wrapper);
 }
