@@ -94,13 +94,13 @@ function sortByWeek(date) {
       } else {
         thisweekreasons[obj.reason] = obj.amount;
       }
-      var date = moment(obj.date).format('dddd');
-      if (thisweekdays.hasOwnProperty(date)) {
-        var totals = thisweekdays[date]; //total spend for date so far
+      var datestring = moment(obj.date).format('dddd');
+      if (thisweekdays.hasOwnProperty(datestring)) {
+        var totals = thisweekdays[datestring]; //total spend for date so far
         totals+= obj.amount;
-        thisweekdays[date] = totals;
+        thisweekdays[datestring] = totals;
       } else {
-        thisweekdays[date] = obj.amount;
+        thisweekdays[datestring] = obj.amount;
       }
     }
   }
