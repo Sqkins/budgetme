@@ -207,7 +207,7 @@ function addTransaction(data) {
 
 function newReason(data) {
   console.log(data);
-  var sql = "INSERT INTO reasons (reason,budget,userid) VALUES (\"" + data.input + "\"," + data.budget + ",\"" + data.userid + "\")";
+  var sql = `INSERT INTO reasons (reason,budget,userid) VALUES ("${data.reason}","${data.budget}","${data.userid}")`;
   con.query(sql, function (err, result) {
     if (!err) {
       console.log(data.reason + 'with budget £' + data.budget + ' has been added as a new reason!');
@@ -219,7 +219,7 @@ function newReason(data) {
           console.log(err);
         }
       });
-      io.emit('reasons-data', reasons);
+      io.emit('reasons-data', getUserReasons(data.userid));
     } else if (err) {
       console.log(err);
     }
