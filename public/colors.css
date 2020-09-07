@@ -43,3 +43,15 @@
 .green-hover-theme:hover {color:#fff !important; background-color:#2fb64f !important}
 .green-hover-text-theme:hover {color:#2fb64f !important}
 .green-hover-border-theme:hover {border-color:#2fb64f !important}
+
+.alert-red
+{color:#fff;background-color:#bd1e24}
+
+.alert-orange
+{color:#fff;background-color:#e97600}
+
+.alert-yellow
+{color:#fff;background-color:#f6c700}
+
+.alert-green
+{color:#fff;background-color:#007256}

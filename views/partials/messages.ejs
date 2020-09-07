@@ -1,23 +1,23 @@
 <% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(error) { %>
-<div class="w3-panel theme-l3 w3-round-xlarge">
+<div class="w3-panel alert-red w3-round-xlarge">
   <span onclick="this.parentElement.style.display='none'"
     class="w3-button w3-large w3-round-xlarge w3-right">&times;</span>
   <p><%= error.msg %></p>
 </div>
 <% }); %> <% } %> <% if(success_msg != ''){ %>
-<div class="w3-panel theme-l3 w3-round-xlarge">
+<div class="w3-panel alert-green w3-round-xlarge">
   <span onclick="this.parentElement.style.display='none'"
     class="w3-button w3-large w3-round-xlarge w3-right">&times;</span>
   <p><%= success_msg %></p>
 </div>
 <% } %> <% if(error_msg != ''){ %>
-<div class="w3-panel theme-l3 w3-round-xlarge">
+<div class="w3-panel alert-red w3-round-xlarge">
   <span onclick="this.parentElement.style.display='none'"
     class="w3-button w3-large w3-round-xlarge w3-right">&times;</span>
   <p><%= error_msg %></p>
 </div>
 <% } %> <% if(error != ''){ %>
-<div class="w3-panel theme-l3 w3-round-xlarge">
+<div class="w3-panel alert-red w3-round-xlarge">
   <span onclick="this.parentElement.style.display='none'"
     class="w3-button w3-large w3-round-xlarge w3-right">&times;</span>
   <p><%= error %></p>
