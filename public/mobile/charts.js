@@ -66,17 +66,3 @@ function drawReasonChart() {
     chart.draw(data, options);
   });
 }
-
-//create trigger to resizeEnd event     
-$(window).resize(function() {
-  if(this.resizeTO) clearTimeout(this.resizeTO);
-  this.resizeTO = setTimeout(function() {
-      $(this).trigger('resizeEnd');
-  }, 500);
-});
-
-//redraw graph when window resize is completed  
-$(window).on('resizeEnd', function() {
-  drawReasonChart();
-  drawWeekdayChart();
-});
