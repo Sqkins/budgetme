@@ -15,19 +15,17 @@
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
         onclick="toggleDropDown('hidden')">&#9776;</a>
     <div class="w3-right">
-        <a onclick="SmoothVerticalScrolling(document.getElementById('editbudget'));" class="w3-bar-item w3-button">Edit
-            Budget</a>
-        <a onclick="SmoothVerticalScrolling(document.getElementById('addreason'));" class="w3-bar-item w3-button">Add a
-            reason</a>
+        <a href="#editbudget" onclick="document.getElementById('budgetcontainer').click();"
+            class="w3-bar-item w3-button w3-hide-small hover-theme">Edit Budget</a>
+        <a href="#addreason" class="w3-bar-item w3-button w3-hide-small hover-theme">Add a reason</a>
         <a onclick="toggleDropDown('hidden-addtransaction')" class="w3-bar-item green-theme w3-button hover-theme">Add
             Transaction</a>
     </div>
 </div>
 <div id="hidden" class="w3-bar-block theme-d2 w3-hide w3-hide-large w3-hide-medium padding-bigscreen below-all">
-    <a onclick="SmoothVerticalScrolling(document.getElementById('editbudget'));" class="w3-bar-item w3-button">Edit
-        Budget</a>
-    <a onclick="SmoothVerticalScrolling(document.getElementById('addreason'));" class="w3-bar-item w3-button">Add a
-        reason</a>
+    <a href="#editbudget" onclick="document.getElementById('budgetcontainer').click();"
+        class="w3-bar-item w3-button">Edit Budget</a>
+    <a href="#addreason" class="w3-bar-item w3-button">Add a reason</a>
 </div>
 
 <div id="hidden-addtransaction" class=" w3-bar-block w3-hide padding-bigscreen below-all" style="transition: 0.4s;">
@@ -54,8 +52,7 @@
     <div class="right-responsive">
         <a class="w3-bar-item w3-mobile hover-theme" onclick="setlastweek();">Last Week</a>
         <a class="w3-bar-item w3-mobile hover-theme" id="thisweekbutton" onclick="setthisweek();">This Week</a>
-        <div class="w3-bar-item w3-mobile"><input type="date" class="theme-d1 w3-input w3-center hover-theme"
-                id="week-selector">
+        <div class="w3-bar-item w3-mobile"><input type="date" class="theme-d1 w3-input w3-center hover-theme" id="week-selector">
         </div>
     </div>
 </div>
