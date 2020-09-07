@@ -82,6 +82,8 @@ function sortByWeek(date) {
   var thisweekdays = [];
   for(var x in spendinghistory) {
     var obj = spendinghistory[x];
+    console.log(obj);
+    console.log(`Date ${date}`);
     if(isWeek(obj.date,date)) {
       thisweek.push(obj);
       thisweektotal += obj.amount;
