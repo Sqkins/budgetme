@@ -180,13 +180,11 @@ function addClasses(element, classes) {
     });
 }
 
-//check if user has any reasons defined
-if (reasons.length == 0) {
-    // the user has no defined reasons
-    //give them the option to add default ones
-    createNoReasonsHTML();
-}
-var defaultreasons = [{
+
+
+
+function addDefaultReasons() {
+    var defaultreasons = [{
         "Food Shop": 30
     },
     {
@@ -208,9 +206,8 @@ var defaultreasons = [{
         "Clothing": 10
     }
 ];
-
-function addDefaultReasons() {
     for (const [key, value] of Object.entries(defaultreasons)) {
+        console.log(`adding ${key} ${value}`)
         socket.emit('add-reason', {
             key,
             value,
