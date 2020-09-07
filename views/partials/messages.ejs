@@ -1,29 +1,25 @@
 <% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(error) { %>
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <%= error.msg %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+<div class="w3-panel theme-l3 w3-round-xlarge">
+  <span onclick="this.parentElement.style.display='none'"
+    class="w3-button w3-large w3-round-xlarge w3-right">&times;</span>
+  <p><%= error.msg %></p>
 </div>
 <% }); %> <% } %> <% if(success_msg != ''){ %>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <%= success_msg %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+<div class="w3-panel theme-l3 w3-round-xlarge">
+  <span onclick="this.parentElement.style.display='none'"
+    class="w3-button w3-large w3-round-xlarge w3-right">&times;</span>
+  <p><%= success_msg %></p>
 </div>
 <% } %> <% if(error_msg != ''){ %>
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <%= error_msg %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+<div class="w3-panel theme-l3 w3-round-xlarge">
+  <span onclick="this.parentElement.style.display='none'"
+    class="w3-button w3-large w3-round-xlarge w3-right">&times;</span>
+  <p><%= error_msg %></p>
 </div>
 <% } %> <% if(error != ''){ %>
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <%= error %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+<div class="w3-panel theme-l3 w3-round-xlarge">
+  <span onclick="this.parentElement.style.display='none'"
+    class="w3-button w3-large w3-round-xlarge w3-right">&times;</span>
+  <p><%= error %></p>
 </div>
 <% } %>
