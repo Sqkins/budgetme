@@ -25,14 +25,14 @@ document.getElementById("defaulttab").click();
 function setlastweek() {
     var weekpicker = document.getElementById('week-selector');
     weekpicker.value = moment().subtract(1, 'weeks').startOf('isoWeek').format('YYYY-MM-DD');
-    //updateInfo(weekpicker.value);
+    updateInfo(weekpicker.value);
     document.getElementById('week-displaying-text').innerHTML = "Showing Last Week";
 }
 
 function setthisweek() {
     var weekpicker = document.getElementById('week-selector');
     weekpicker.value = moment().subtract(0, 'weeks').startOf('isoWeek').format('YYYY-MM-DD');
-    //updateInfo(weekpicker.value);
+    updateInfo(weekpicker.value);
     document.getElementById('week-displaying-text').innerHTML = "Showing This Week";
 }
 document.getElementById("thisweekbutton").click();
@@ -42,7 +42,7 @@ weekpicker.addEventListener('change', (event) => {
     var date = event.target.value;
     event.target.value = moment(date).subtract(0, 'weeks').startOf('isoWeek').format('YYYY-MM-DD');
     document.getElementById('week-displaying-text').innerHTML = `Showing Week ${event.target.value}`;
-    //updateInfo(date);
+    updateInfo(date);
 });
 
 var acc = document.getElementsByClassName("accordion");
