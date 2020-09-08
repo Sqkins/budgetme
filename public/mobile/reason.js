@@ -40,3 +40,14 @@ function editBudget(idstring) {
   socket.emit('edit-budget',{reason,budget,userid});
   location.reload();
 }
+
+function deleteReason(idstring) {
+  var index = parseInt(idstring.substring(9));
+  var reason;
+  for(var i in reasons) {
+    if(reasons[i].id === index) {
+      reason = reasons[i].reason;
+    }
+  }
+  console.log(reason);
+}

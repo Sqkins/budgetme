@@ -69,6 +69,7 @@ function createBudgetElement(currentBudget, reason, id, parentelement) {
 
     var row1 = document.createElement("div");
     row1.classList.add("w3-cell-row");
+    row1.setAttribute("id",`container${id}`);
 
     var h3 = document.createElement("h3");
     addClasses(h3, ["w3-cell", "text-theme"]);
@@ -79,8 +80,13 @@ function createBudgetElement(currentBudget, reason, id, parentelement) {
     p.innerHTML = `Budget: £${currentBudget}`;
     p.setAttribute("style", "text-align: right;")
 
+    var a = document.createElement('a');
+    a.innerHTML = 'Delete';
+    a.setAttribute("onclick",`deleteReason('container${id}')`);
+
     row1.appendChild(h3); //append children to row class
     row1.appendChild(p);
+    row1.appendChild(a);
 
     var row2 = document.createElement("div");
     row2.classList.add("w3-cell-row");
