@@ -7,12 +7,12 @@
 <script>
     //add logout button to header
     var header = document.getElementById("header");
-    header.innerHTML = +
-        '<a type=\"button\" href=\"http://134.122.109.226/users/logout\" class=\"green-theme w3-bar-item w3-right button-logout\">Logout</a>';
+    var a = document.createElement("a");
+    a.setAttribute("class","green-theme w3-bar-item w3-right button-logout");
+    a.setAttribute("type","button");
+    a.setAttribute("href","http://134.122.109.226/users/logout");
+    header.appendChild(a);
 </script>
-
-<a type="button" href="http://134.122.109.226/users/logout"
-    class="green-theme w3-bar-item w3-right button-logout">Logout</a>
 
 <div class="w3-bar theme-d1 padding-bigscreen">
     <span class="w3-bar-item">Quick Actions</span>
