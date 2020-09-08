@@ -76,7 +76,7 @@ function createBudgetElement(currentBudget, reason, id, parentelement) {
     h3.innerHTML = reason;
 
     var subdiv = document.createElement("div");
-    a.setAttribute("class", "w3-cell");
+    subdiv.setAttribute("class", "w3-cell");
     var p = document.createElement("p");
     p.innerHTML = `Budget: £${currentBudget}`;
     p.setAttribute("style", "text-align: right;")
