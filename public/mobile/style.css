@@ -12,6 +12,10 @@
   transition: 0.4s;
 }
 
+.button-logout {
+  text-decoration: none;
+}
+
 .panel {
   max-height: 0;
   overflow: hidden;
