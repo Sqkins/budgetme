@@ -1,33 +1,29 @@
-<body>
-  <header class="theme w3-bar">
-    <h1 class="w3-bar-item">Budgetme</h1>
-  </header>
-  <br>
-  <div class="border-theme w3-round-xlarge w3-display-middle w3-padding" style="width:80%">
-    <h2>Register</h2>
-    <% include ./partials/messages %>
-    <form action="/users/register" method="POST">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input class="w3-input" type="name" id="name" name="name" class="form-control" placeholder="Enter Name"
-          value="<%= typeof name != 'undefined' ? name : '' %>" />
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input class="w3-input" type="email" id="email" name="email" class="form-control" placeholder="Enter Email"
-          value="<%= typeof email != 'undefined' ? email : '' %>" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input class="w3-input" type="password" id="password" name="password" class="form-control"
-          placeholder="Create Password" value="<%= typeof password != 'undefined' ? password : '' %>" />
-      </div>
-      <div class="form-group">
-        <label for="password2">Confirm Password</label>
-        <input class="w3-input" type="password" id="password2" name="password2" class="form-control"
-          placeholder="Confirm Password" value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
-      </div>
-      <button type="submit" class="w3-button theme-d2 hover-theme">Register</button>
-    </form>
-    <p>Not a Stranger? <a href="http://134.122.109.226/users/login">Login Now</a></p>
-  </div>
+<br>
+<div class="border-theme w3-round-xlarge w3-display-middle w3-padding" style="width:80%">
+  <h2>Register</h2>
+  <% include ./partials/messages %>
+  <form action="/users/register" method="POST">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input class="w3-input" type="name" id="name" name="name" class="form-control" placeholder="Enter Name"
+        value="<%= typeof name != 'undefined' ? name : '' %>" />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="w3-input" type="email" id="email" name="email" class="form-control" placeholder="Enter Email"
+        value="<%= typeof email != 'undefined' ? email : '' %>" />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="w3-input" type="password" id="password" name="password" class="form-control"
+        placeholder="Create Password" value="<%= typeof password != 'undefined' ? password : '' %>" />
+    </div>
+    <div class="form-group">
+      <label for="password2">Confirm Password</label>
+      <input class="w3-input" type="password" id="password2" name="password2" class="form-control"
+        placeholder="Confirm Password" value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+    </div>
+    <button type="submit" class="w3-button theme-d2 hover-theme">Register</button>
+  </form>
+  <p>Not a Stranger? <a href="http://134.122.109.226/users/login">Login Now</a></p>
+</div>

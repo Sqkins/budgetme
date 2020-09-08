@@ -4,12 +4,16 @@
     var userid = div.innerText;
 </script>
 
+<script>
+    //add logout button to header
+    var header = document.getElementById("header");
+    header.innerHTML = +
+        '<a type=\"button\" href=\"http://134.122.109.226/users/logout\" class=\"green-theme w3-bar-item w3-right button-logout\">Logout</a>';
+</script>
 
-<header class="theme w3-bar">
-    <h1 class="w3-bar-item">Budgetme</h1>
-    <a type="button" href="http://134.122.109.226/users/logout"
-        class="green-theme w3-bar-item w3-right button-logout">Logout</a>
-</header>
+<a type="button" href="http://134.122.109.226/users/logout"
+    class="green-theme w3-bar-item w3-right button-logout">Logout</a>
+
 <div class="w3-bar theme-d1 padding-bigscreen">
     <span class="w3-bar-item">Quick Actions</span>
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
@@ -115,7 +119,8 @@
                 <p>
                     <div id="noreasonstab"></div>
                     <label class="text-theme"><b>Reason</b></label>
-                    <input id="new-reason" class="w3-input w3-border" type="text"></p>
+                    <input id="new-reason" class="w3-input w3-border" type="text">
+                </p>
                 <p>
                     <label class="text-theme"><b>Budget</b></label>
                     <input id="new-reason-budget" class="w3-input w3-border" type="number" step="0.01"></p>
