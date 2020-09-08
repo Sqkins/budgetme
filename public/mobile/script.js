@@ -75,8 +75,9 @@ function createBudgetElement(currentBudget, reason, id, parentelement) {
     addClasses(h3, ["w3-cell", "text-theme"]);
     h3.innerHTML = reason;
 
+    var subdiv = document.createElement("div");
+    a.setAttribute("class", "w3-cell");
     var p = document.createElement("p");
-    addClasses(p, ["w3-cell"]);
     p.innerHTML = `Budget: £${currentBudget}`;
     p.setAttribute("style", "text-align: right;")
 
@@ -86,8 +87,9 @@ function createBudgetElement(currentBudget, reason, id, parentelement) {
     a.setAttribute("class", "delete-button");
 
     row1.appendChild(h3); //append children to row class
-    row1.appendChild(a);
-    row1.appendChild(p);
+    subdiv.appendChild(a);
+    subdiv.appendChild(p);
+    row1.appendChild(subdiv);
 
 
     var row2 = document.createElement("div");
