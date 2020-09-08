@@ -49,6 +49,6 @@ function deleteReason(idstring) {
       reason = reasons[i].reason;
     }
   }
-  socket.emit('edit-budget',{reason,userid});
+  socket.emit('delete-reason',{reason,userid});
   location.reload();
 }
