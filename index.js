@@ -128,6 +128,25 @@ con.connect(function (err) {
     }
   });
 });
+function reloadData() {
+  var sql = "SELECT * FROM reasons";
+  con.query(sql, function (err, result) {
+    if (!err) {
+      reasons = result;
+      console.log(reasons);
+    } else if (err) {
+      console.log(err);
+    }
+  });
+  var sql = "SELECT * FROM transactions";
+  con.query(sql, function (err, result) {
+    if (!err) {
+      spendinghistory = result;
+    } else if (err) {
+      console.log(err);
+    }
+  });
+}
 
 //variables
 
@@ -163,7 +182,24 @@ io.on('connection', function (socket) {
   socket.on('edit-budget', function (data) {
     editBudget(data);
   });
+  socket.on('delete-reason', function (data) {
+    deleteReason(data);
+  });
 });
+
+function deleteReason(data) {
+  var userid = data.userid;
+  var reason = data.reason;
+  var sql = `DELETE FROM reasons WHERE userid = '${userid}' AND reason = '${reason}'`;
+  con.query(sql, function (err, result) {
+    if (!err) {
+      console.log(`Deleted ${reason} from ID: ${userid}`);
+      reloadData();
+    } else if (err) {
+      console.log(err);
+    }
+  });
+}
 
 function getUserSpending(userid) {
   var r = [];

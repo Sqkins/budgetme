@@ -21,10 +21,18 @@
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
+
 .delete-button {
   text-decoration: underline;
-  color: red;;
+  cursor: pointer;
+  color: red;
+  ;
 }
+
+.delete-button:hover {
+  text-decoration: none;
+}
+
 .center-v {
   padding: 10px 0;
 }
