@@ -10,9 +10,9 @@
     //add logout button to header
     var header = document.getElementById("header");
     var a = document.createElement("a");
-    a.setAttribute("class","green-theme w3-bar-item w3-right button-logout");
-    a.setAttribute("type","button");
-    a.setAttribute("href","http://134.122.109.226/users/logout");
+    a.setAttribute("class", "green-theme w3-bar-item w3-right button-logout");
+    a.setAttribute("type", "button");
+    a.setAttribute("href", "http://134.122.109.226/users/logout");
     a.innerHTML = "Logout";
 
     var usernametext = document.createElement('h3');
@@ -30,13 +30,13 @@
         <a href="#addreason" class="w3-bar-item w3-button w3-hide-small hover-theme">Add a reason</a>
         <a onclick="toggleDropDown('hidden-addtransaction')" class="w3-bar-item green-theme w3-button hover-theme">Add
             Transaction</a>
-        
+
     </div>
 </div>
 <div id="hidden" class="w3-bar-block theme-d2 w3-hide w3-hide-large w3-hide-medium padding-bigscreen below-all">
+    <button class="w3-bar-item w3-button">Change to Monthly</button>
     <a href="#editbudget" onclick="document.getElementById('budgetcontainer').click();"
         class="w3-bar-item w3-button">Edit Budget</a>
-    <button class="w3-bar-item w3-button">Change to Monthly</button>
     <a href="#addreason" class="w3-bar-item w3-button">Add a reason</a>
 </div>
 

@@ -12,7 +12,7 @@ socket.on('spending-data', function (data) {
   spendinghistory = data;
   sortByReason();
   sortByDate();
-  sortByWeek(moment().format('YYYY-MM-DD'));
+  sortByPeriod(moment().format('YYYY-MM-DD'));
 
   updateReasons();
   showTransactions();
