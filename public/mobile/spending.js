@@ -20,8 +20,7 @@ function togglePeriod() {
   } else {
     periodtype = "week";
   }
-  sortByPeriod(moment().format('YYYY-MM-DD'));
-  document.getElementById("week-selector").value = moment().format('YYYY-MM-DD');
+  updateInfo(moment().format('YYYY-MM-DD'));
 }
 
 
