@@ -41,7 +41,7 @@ function drawReasonChart() {
     ];
     for(var x in reasons) {
       var r = reasons[x].reason;
-      var amount = weekreasons[r];
+      var amount = periodreasons[r];
       if(amount == null) {
         amount = 0;
       }
