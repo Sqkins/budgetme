@@ -104,26 +104,7 @@ function sortByPeriod(date) {
         } else {
           thisperiodreasons[obj.reason] = obj.amount;
         }
-        var weekdaystotal = [];
-        var datestring = moment(obj.date).format('dddd');
-        totalWeekdayTransactions.datestring++;
-        if (weekdaystotal.hasOwnProperty(datestring)) {
-          var totals = weekdaystotal[datestring]; //total spend for date so far
-          totals += obj.amount;
-          weekdaystotal[datestring] = totals;
-        } else {
-          weekdaystotal[datestring] = obj.amount;
-        }
       }
-    }
-    console.log(totalWeekdayTransactions);
-    console.log(weekdaystotal);
-    for(var x in weekdaystotal) {
-      var totaltransactions = totalWeekdayTransactions.x;
-      var totalspend = weekdaystotal.x;
-      console.log(daystring);
-      var avrg = totalspend/totaltransactions;
-      thisweekdays[daystring] = avrg;
     }
   }
   period = thisperiod;
