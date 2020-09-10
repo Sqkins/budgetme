@@ -116,10 +116,11 @@ function sortByPeriod(date) {
         }
       }
     }
+    console.log(totalWeekdayTransactions);
+    console.log(weekdaystotal);
     for(var x in weekdaystotal) {
       var totaltransactions = totalWeekdayTransactions.x;
       var totalspend = weekdaystotal.x;
-      var daystring = Object.keys(weekdaystotal).x;
       console.log(daystring);
       var avrg = totalspend/totaltransactions;
       thisweekdays[daystring] = avrg;
