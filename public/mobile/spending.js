@@ -11,14 +11,14 @@ var periodreasons = 0;
 var periodreasons = [];
 //this weeks breakdown by day
 var weekdays = [];
-//values = week month
-var periodtype = "week"
+//values = Week Month
+var periodtype = "Week"
 
 function togglePeriod() {
-  if (periodtype === "week") {
-    periodtype = "month";
+  if (periodtype === "Week") {
+    periodtype = "Month";
   } else {
-    periodtype = "week";
+    periodtype = "Week";
   }
   updateInfo(moment().format('YYYY-MM-DD'));
 }
@@ -66,7 +66,7 @@ function sortByPeriod(date) {
   var thisperiodtotal = 0;
   var thisperiodreasons = [];
   var thisweekdays = [];
-  if (periodtype === "week") {
+  if (periodtype === "Week") {
     for (var x in spendinghistory) {
       var obj = spendinghistory[x];
       if (isWeek(obj.date, date)) {
@@ -90,7 +90,8 @@ function sortByPeriod(date) {
       }
     }
   }
-  if (periodtype === "month") {
+  if (periodtype === "Month") {
+    var totalWeekdayTransactions = [];
     for (var x in spendinghistory) {
       var obj = spendinghistory[x];
       if (isMonth(obj.date, date)) {
@@ -103,7 +104,24 @@ function sortByPeriod(date) {
         } else {
           thisperiodreasons[obj.reason] = obj.amount;
         }
+        var weekdaystotal = [];
+        var datestring = moment(obj.date).format('dddd');
+        totalWeekdayTransactions.datestring++;
+        if (weekdaystotal.hasOwnProperty(datestring)) {
+          var totals = weekdaystotal[datestring]; //total spend for date so far
+          totals += obj.amount;
+          weekdaystotal[datestring] = totals;
+        } else {
+          weekdaystotal[datestring] = obj.amount;
+        }
       }
+    }
+    for(var x in weekdaystotal) {
+      var totaltransactions = totalWeekdayTransactions.x;
+      var totalspend = weekdaystotal.x;
+      var daystring = Object.keys(weekdaystotal).x;
+      var avrg = totalspend/totaltransactions;
+      thisweekdays.daystring = avrg;
     }
   }
   period = thisperiod;
